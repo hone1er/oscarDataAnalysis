@@ -5,15 +5,15 @@
     border-radius: 0px;
     padding: 20px;
     font-size: 150%;
-  }
+    font-family: 'Roboto', sans-serif;
+}
 
-  
-  .data{
+.data{
       grid-area: data;
       background-color: #c5b358;
-    }
+}
     
-    .header {
+.header {
     grid-area: header;
     background-color: #f5f5f5;
     height: 750px; /* You must set a specified height */
@@ -27,12 +27,10 @@
     padding: 25px;
 }
 
+
 .content p {
     padding: 0 20px 20px 20px;
-}
-
-.content h2 {
-    font-weight: bold;
+    font-family: "Hoefler Text 4r","Baskerville Old Face","Hoefler Text","Times New Roman",serif;
 }
 
 .footer {
@@ -46,12 +44,12 @@
 
 .sidebar {
     grid-area: sidebar;
-    background-color: #c32a2a;
-    color: #2a2a2a;
+    background-color: #990d0d;
+    color: #f5f5f5;
 }
 
 .sidebar a {
-    color: #f5f5f5;
+    color: #c5b358;
 }
 
 .blank1{
@@ -86,10 +84,9 @@
     color: #f5f5f5;
 }
 
-  /* NAVBAR */
+  /* NAVBAR STYLING */
 .navbar {
     margin-bottom: 0px;
-    height: 55px;
 }
 
 .navbar-inverse {
@@ -107,17 +104,33 @@
 #navbox a {
     background-color: #222;
 }
-/* End of NAVBAR */
+/* End of NAVBAR STYLING */
 
+.titles {
+    letter-spacing: .4em;
+}
 /* "Academy Awards Data Analysis" */
 #mainTitle {
     margin-top: 200px;
     color: #2a2a2a;
 }
 
-/* Start of media queries */
+#analysis {
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: .2em;
+}
+#academy {
+    letter-spacing: .5em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
 
+
+/**/
+/**/
+/* Start of media queries */
 @media (max-width: 1024px) {
+
     .blanks {
         display: none;
     }
@@ -166,4 +179,3 @@
         " footer";
     }
   }
-  
