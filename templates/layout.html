@@ -31,32 +31,32 @@
                                     </div>
                                     <div class="collapse navbar-collapse" id="myNavbar">
                                         <ul class="nav navbar-nav" style="float: right;">
-                                                <li class="nav-item active">
-                                                        <a class="nav-link current" href="{{ url_for('index') }}">
-                                                            HOME
-                                                        </a>
-                                                      </li>
-
+                                            {% block navblock %}
+                                            {% endblock %}
                                         </ul>
                                     </div>
                             </nav>
                 </div>
+            
             <div class="box header">
                 {% block header %}{% endblock %}
             </div>
-            <div class="blanks blank1"></div>
-            <div class="blanks blank2"></div>
             <div class="box content">
                 {% block content %}{% endblock %}
+            </div>
+                    <!--BLANKS is the locations with background images-->           
+             <div class="blanks content2">
+            </div>
+            <div class="blanks content3">
             </div>
             <div class="box sidebar">
                 {% block sidebar %}{% endblock %}
             </div>
-            <div class="box footer">
-                {% block footer %}{% endblock %}
-            </div>
             <div class="box data">
                 {% block data %}{% endblock %}
+            </div>
+            <div class="box footer">
+                {% block footer %}{% endblock %}
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -11,6 +11,7 @@
 .data{
       grid-area: data;
       background-color: #c5b358;
+      position: relative;
 }
     
 .header {
@@ -52,7 +53,7 @@
     color: #c5b358;
 }
 
-.blank1{
+.content2{
     grid-area: b1;
     background-image: url(../img/unsplashTheater.jpg);
     background-position: center; /* Center the image */
@@ -61,7 +62,7 @@
 
 }
 
-.blank2 {
+.content3 {
     grid-area: b2;
     background-image: url(../img/oscarSmoke.jpg);
     background-position: center; /* Center the image */
@@ -106,15 +107,16 @@
 }
 /* End of NAVBAR STYLING */
 
+/* Headers  for paragraphs and rules */
 .titles {
     letter-spacing: .4em;
 }
+
 /* "Academy Awards Data Analysis" */
 #mainTitle {
     margin-top: 200px;
     color: #2a2a2a;
 }
-
 #analysis {
     font-family: 'Times New Roman', Times, serif;
     letter-spacing: .2em;
@@ -124,10 +126,14 @@
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
 }
-
-
 /**/
 /**/
+/**/
+.input-group {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 /* Start of media queries */
 @media (max-width: 1024px) {
 

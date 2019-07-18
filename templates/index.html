@@ -1,7 +1,23 @@
-{% extends "layout.html" %} {% block header %}<div data-aos="fade-up"><h1 id="mainTitle"><span id="academy">ACADEMY AWARDS</span> 
+{% extends "layout.html" %} 
+
+{% block navblock %}
+<li class="nav-item active">
+  <a class="nav-link current" href="{{ url_for('index') }}">
+      HOME
+  </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link current" href="{{ url_for('about') }}">
+        ABOUT
+    </a>
+  </li>
+{% endblock %}
+
+{% block header %}<div data-aos="fade-up"><h1 id="mainTitle"><span id="academy">ACADEMY AWARDS</span> 
   <br><br>
   <span id="analysis">Data Analysis</span></h1></div>
 {% endblock %}
+
 {% block content %}
 <div data-aos="fade-down">
 <h2 class="titles">INTRODUCTION:</h2>
@@ -16,7 +32,7 @@
   back-up or debunk the claims.
 </p>
 </div>
-<div data-aos="fade-up">
+<div data-aos="fade-up" data-aos-offset="200">
 <h2 class="titles">DATASETS:</h2>
 <p>
   <a href="https://www.kaggle.com/sebask/the-oscars-dataset-preparing-for-2017/data">Dataset 1</a>
@@ -49,24 +65,24 @@
   understand what will get them the most bang for their marketing buck.
 </p>
 </div>
-{% endblock %} {% block sidebar %}<div id="sidebar" data-aos="fade-up">
+{% endblock %} 
+
+{% block sidebar %}<div id="sidebar" data-aos="fade-up" data-aos-offset="500">
   <h2 class="titles">RULES:</h2>
   <h3>All eligible motion pictures must be:</h3>
-  <ul data-aos="fade-up">
+  <ul>
     <li data-aos="fade-up" class="rules">Feature length (defined as over 40 minutes)</li>
     <li data-aos="fade-up" class="rules">Publicly exhibited by means of 35mm or 70mm film, or in a 24- or 48-frame progressive scan
         Digital Cinema format </li>
-    <li data-aos="fade-up" class="rules">For paid admission in a commercial motion picture theater in Los Angeles County for a qualifying run of at least seven consecutive days</li>
+    <li data-aos="fade-up class="rules">For paid admission in a commercial motion picture theater in Los Angeles County for a qualifying run of at least seven consecutive days</li>
     <li data-aos="fade-up" class="rules">released within the Awards year deadlines</li>
     <li data-aos="fade-up" class="rules">Films that, in any version, receive their first public exhibition or distribution in any manner other than
       as a theatrical motion picture release will not be eligible for Academy Awards in any category.</li>
   </ul>
-  <p data-aos="fade-up">Click <a href="https://www.oscars.org/oscars/rules-eligibility">HERE</a> for the full list of rules to qualify for an Oscar!</p>
+  <p data-aos="fade-up">Click <a href="https://www.oscars.org/oscars/rules-eligibility">HERE</a> for the full list of rules films must follow to qualify for an Oscar!</p>
   </div>
   {% endblock %} 
-  {% block footer %}
-  Oscar Analysis &copy;2019
-  {% endblock %}
+  
   {% block data %}  
   <form action="/">
     <div class="input-group">
@@ -76,5 +92,9 @@
       </div>
     </div>
   </form>
+  {% endblock %}
+
+  {% block footer %}
+  Oscar Analysis &copy;2019
   {% endblock %}
   
