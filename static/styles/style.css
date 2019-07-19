@@ -1,11 +1,15 @@
 .box {
     text-align: center;
     background-color: #444;
-    color: #f5f5f5;
+    color: #2a2a2a;
     border-radius: 0px;
     padding: 20px;
     font-size: 150%;
     font-family: 'Roboto', sans-serif;
+}
+
+.charts {
+    grid-area: charts;
 }
 
 .data{
@@ -80,6 +84,7 @@
     "b1 b1 header header header b2 b2"
     " data data content content content sidebar sidebar"
     "data data content content content sidebar sidebar"
+    "charts charts charts charts charts charts charts"
     " footer footer footer footer footer footer footer";
     background-color: #f5f5f5;
     color: #f5f5f5;
@@ -95,7 +100,9 @@
 }
 .navbar-inverse .navbar-brand {
     color: #f5f5f5;
+    letter-spacing: 0.1em;
 }
+
 
 #navbox {
     padding: 0px;
@@ -110,6 +117,10 @@
 /* Headers  for paragraphs and rules */
 .titles {
     letter-spacing: .4em;
+}
+
+.rules {
+    font-family: 'Times New Roman', Times, serif;
 }
 
 /* "Academy Awards Data Analysis" */
@@ -149,6 +160,10 @@
         margin-top: -5px;
     }
 
+    .input-group {
+        position: relative;
+    }
+    
     #mainTitle {
         color: #f5f5f5;
     }
@@ -161,9 +176,10 @@
         grid-template-areas:
         "nav nav  nav nav nav  nav nav"
         "header header header header header header header"
-        " data data content content content content content"
-        "data data content content content content content"
-        "sidebar sidebar sidebar sidebar sidebar sidebar sidebar"
+        " sidebar sidebar content content content content content"
+        "sidebar sidebar content content content content content"
+        "data data data data data data data"
+        "charts charts charts charts charts charts charts"
         " footer footer footer footer footer footer footer";
     }
 }
@@ -182,6 +198,7 @@
         "content"
         "sidebar"
         "data" 
+        "charts"
         " footer";
     }
   }
