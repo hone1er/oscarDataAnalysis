@@ -16,15 +16,15 @@ To deploy locally with Flask on localhost:
 python app.py
 ```
 To visit the hosted version:
+```
 ### www.tbdtbdtbd.com
+```
 
 
 
 ## Requirements
 ```
-tbd
-tbd
-tbd
+https://github.com/hone1er/oscarDataAnalysis/blob/master/requirements.txt
 ```
 
 
