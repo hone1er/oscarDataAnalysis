@@ -19,6 +19,16 @@ To visit the hosted version:
 ### www.tbdtbdtbd.com
 
 
+
+## Requirements
+```
+tbd
+tbd
+tbd
+```
+
+
+
 ## Credits
 This was created for the UCBX Data Analytics Bootcamp Final Project by:
  - Chris: https://github.com/chrisestrada007
