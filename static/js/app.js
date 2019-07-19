@@ -5,6 +5,10 @@ function buildLineGraph() {
     // Grab the value from the form and make a d3.json request to the API in order to build traces and layout for line graph
     var selector = d3.select("#movie");
     var text = selector.property("value");
+    text = text.toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
     var url = `/graph/${text}`;
     d3.json(url).then(function(response){
         console.log(response.budget[text])
@@ -30,7 +34,12 @@ function buildLineGraph() {
         
         var data = [trace1, trace2];
     
-        var layout = {barmode: 'stack'};
+        var layout = {
+            barmode: 'group',
+            yaxis: {
+                tickformat: ',',
+                tickangle: '45',
+            }};
         
         Plotly.newPlot('myDiv', data, layout, {responsive: true});
     });

@@ -15,6 +15,7 @@ def about():
     return render_template('about.html')
 
 # API call for bar chart
+###############################################################
 class Grapher:
     def __init__(self):
         file = os.path.join(os.path.dirname('__file__'),
@@ -27,7 +28,7 @@ class Grapher:
         self.movie = movie.title()
         movieInfo = self.df.loc[self.movie]
         return movieInfo.to_json()
-
+################################################################
 
 grapher = Grapher()
 app.add_url_rule("/graph/<movie>", "",
