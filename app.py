@@ -14,7 +14,7 @@ def index():
 def about():
     return render_template('about.html')
 
-# API call for bar chart
+# API call for bar chart and tables
 ###############################################################
 
 

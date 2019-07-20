@@ -101,14 +101,15 @@
   <h1>Enter a movie name:</h1>
   <form autocomplete="off" id="frm1">
     <div class="autocomplete">
-    <input type="text" id="movie" />
+      <input type="text" id="movie" />
     </div>
     <button id="filter-btn" type="submit" class="send_movie">Search</button>
   </form>
 </div>
 {% endblock %} {% block charts %}
 <div class="container-fluid">
-  <div id="table" class="container-fluid"></div>
+  <div id="table"></div>
   <div id="myDiv"></div>
+  <div id="starRating"></div>
 </div>
 {% endblock %} {% block footer %} Oscar Analysis &copy;2019 {% endblock %}

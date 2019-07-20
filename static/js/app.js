@@ -1,17 +1,5 @@
 AOS.init();
 
-function movieTitle() {
-  // Grab the movie title from the html form and return as a string with title capitaliztion.
-  var selector = d3.select("#movie");
-  var text = selector.property("value");
-  text = text
-    .toLowerCase()
-    .split(" ")
-    .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(" ");
-  return text;
-}
-
 function callAPI(movie) {
   // Separated API call to avoid multiple calls when building the dashboard.
   var url = `/graph/${movie}`;
@@ -26,20 +14,24 @@ function buildBarChart(movie, apiCall) {
     var trace1 = {
       x: ["Budget"],
       y: [response.budget[movie]],
+      width: [0.4],
       name: "Budget",
       type: "bar",
       marker: {
-        color: "#990d0d"
+        color: "#990d0d",
+        opacity: 0.85
       }
     };
 
     var trace2 = {
       x: ["Revenue"],
       y: [response.revenue[movie]],
+      width: [0.4],
       name: "Revenue",
       type: "bar",
       marker: {
-        color: "#c5b358"
+        color: "#c5b358",
+        opacity: 0.85
       }
     };
 
@@ -112,16 +104,74 @@ function addTable(movie, apiCall) {
       cell.text(value[movie].toLocaleString());
     });
   });
-};
+}
+
+function starRating(movie, response) {
+  if (document.contains(document.getElementById("star"))) {
+    document.getElementById("star").remove();
+  }
+  const rate = response.then(function(rate) {
+    var table = d3
+      .select("#starRating")
+      .append("table")
+      .attr("id", "star");
+    var tbody = table.append("tbody");
+    var header = table.append("thead").append("tr");
+    header
+      .selectAll("th")
+      .data(["Movie", "Rating"])
+      .enter()
+      .append("th")
+      .text(function(d) {
+        return d;
+      });
+    var row = tbody.append("tr").attr("class", "hotel_a");
+    Object.entries(rate).forEach(([key, value]) => {
+      if (key == "vote_average") {
+        var text = [movie, value[movie].toLocaleString()];
+        var counter = 0;
+        text.forEach(element => {
+          if (counter === 0) {
+            var cell = row.append("td");
+            cell.text(element);
+            counter++;
+          } else if (counter === 1) {
+            var cell = row
+              .append("td")
+              .append("div")
+              .attr("class", "stars-outer");
+            var outer = cell.append("div").attr("class", "stars-inner");
+            var score = rate.vote_average[movie] / 2;
+            const ratings = {
+              hotel_a: score
+            };
+            // total number of stars
+            const starTotal = 5;
+
+            for (const rating in ratings) {
+              const starPercentage = (ratings[rating] / starTotal) * 100;
+              const starPercentageRounded = `${Math.round(starPercentage / 10) *
+                10}%`;
+              document.querySelector(
+                `.${rating} .stars-inner`
+              ).style.width = starPercentageRounded;
+            }
+          }
+        });
+      }
+    });
+  });
+}
 
 function doAll() {
   d3.event.preventDefault();
-  var selector = d3.select("#movie");
-  var movie = selector.property("value");
+  const selector = d3.select("#movie");
+  const movie = selector.property("value");
   const response = callAPI(movie);
+  starRating(movie, response);
   buildBarChart(movie, response);
   addTable(movie, response);
 }
 
-var filterbtn = d3.select("#filter-btn");
+const filterbtn = d3.select("#filter-btn");
 filterbtn.on("click", doAll);

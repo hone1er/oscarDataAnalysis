@@ -1,18 +1,14 @@
-{% extends "layout.html" %} 
-{% block navblock %}
+{% extends "layout.html" %} {% block navblock %}
 <li class="nav-item">
   <a class="nav-link current" href="{{ url_for('index') }}">
-      HOME
+    HOME
   </a>
 </li>
 <li class="nav-item active">
-    <a class="nav-link current" href="{{ url_for('about') }}">
-        ABOUT
-    </a>
-  </li>
-{% endblock %}
-{% block header %}{% endblock %}
-{% block content %}{% endblock %}
-{% block sidebar %}{% endblock %}
-{% block data %}{% endblock %}
-{% block footer %}{% endblock %}
+  <a class="nav-link current" href="{{ url_for('about') }}">
+    ABOUT
+  </a>
+</li>
+{% endblock %} {% block header %} {% endblock %} {% block content %}{% endblock
+%} {% block sidebar %}{% endblock %} {% block data %}{% endblock %} {% block
+footer %}{% endblock %}
