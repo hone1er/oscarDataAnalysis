@@ -116,7 +116,8 @@ function addTable(movie, apiCall) {
 
 function doAll() {
   d3.event.preventDefault();
-  const movie = movieTitle();
+  var selector = d3.select("#movie");
+  var movie = selector.property("value");
   const response = callAPI(movie);
   buildBarChart(movie, response);
   addTable(movie, response);

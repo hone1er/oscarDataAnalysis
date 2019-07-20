@@ -26,7 +26,7 @@ class Grapher:
 
     def graph(self, movie):
         # Format the name
-        self.movie = movie.title()
+        self.movie = movie
         movieInfo = self.df.loc[self.movie]
         return movieInfo.to_json()
 ################################################################

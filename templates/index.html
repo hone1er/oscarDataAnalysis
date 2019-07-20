@@ -99,8 +99,10 @@
 {% endblock %} {% block data %}
 <div class="container-fluid nameform input-group">
   <h1>Enter a movie name:</h1>
-  <form id="frm1">
+  <form autocomplete="off" id="frm1">
+    <div class="autocomplete">
     <input type="text" id="movie" />
+    </div>
     <button id="filter-btn" type="submit" class="send_movie">Search</button>
   </form>
 </div>
