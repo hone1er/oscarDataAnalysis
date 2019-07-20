@@ -16,12 +16,13 @@ def about():
 
 # API call for bar chart
 ###############################################################
+
+
 class Grapher:
     def __init__(self):
         file = os.path.join(os.path.dirname('__file__'),
-        "resources/movieGraph.csv")
-        self.df = pd.read_csv(file,index_col=['original_title','title'])
-
+                            "resources/movieGraph.csv")
+        self.df = pd.read_csv(file, index_col=['original_title', 'title'])
 
     def graph(self, movie):
         # Format the name
@@ -29,6 +30,7 @@ class Grapher:
         movieInfo = self.df.loc[self.movie]
         return movieInfo.to_json()
 ################################################################
+
 
 grapher = Grapher()
 app.add_url_rule("/graph/<movie>", "",

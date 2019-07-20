@@ -2,73 +2,101 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="{{url_for("static", filename="styles/style.css")}}">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div class="wrapper">
-                <div id="navbox" class="box navbox">
-                        <nav class="navbar navbar-inverse">
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                        <a class="navbar-brand" href="#">OSCAR PROJECT</a>
-                                    </div>
-                                    <div class="collapse navbar-collapse" id="myNavbar">
-                                        <ul class="nav navbar-nav" style="float: right;">
-                                            {% block navblock %}
-                                            {% endblock %}
-                                        </ul>
-                                    </div>
-                            </nav>
-                </div>
-            
-            <div class="box header">
-                {% block header %}{% endblock %}
-            </div>
-            <div class="box content">
-                {% block content %}{% endblock %}
-            </div>
-                    <!--BLANKS is the locations with background images-->           
-             <div class="blanks content2">
-            </div>
-            <div class="blanks content3">
-            </div>
-            <div class="box sidebar">
-                {% block sidebar %}{% endblock %}
-            </div>
-            <div class="box data">
-                {% block data %}{% endblock %}
-            </div>
-            <div class="box charts">
-                {% block charts %}{% endblock %}
-            </div>
-            <div class="box footer">
-                {% block footer %}{% endblock %}
-            </div>
-        </div>
-        <script src="https://d3js.org/d3.v5.min.js"></script>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-        </body>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="{{url_for("static", filename="styles/style.css")
+    }}">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div class="wrapper">
+      <div id="navbox" class="box navbox">
+        <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#myNavbar"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OSCAR PROJECT</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="float: right;">
+              {% block navblock %} {% endblock %}
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="box header">
+        {% block header %}{% endblock %}
+      </div>
+      <div class="box content">
+        {% block content %}{% endblock %}
+      </div>
+      <!--BLANKS is the locations with background images-->
+      <div class="blanks content2"></div>
+      <div class="blanks content3"></div>
+      <!--BLANKS is the locations with background images-->
+      <div class="box sidebar">
+        {% block sidebar %}{% endblock %}
+      </div>
+      <div class="box data">
+        {% block data %}{% endblock %}
+      </div>
+      <div class="box charts">
+        {% block charts %}{% endblock %}
+      </div>
+      <div class="box footer">
+        {% block footer %}{% endblock %}
+      </div>
+    </div>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
 </html>
