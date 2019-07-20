@@ -12,7 +12,7 @@ function buildBarChart() {
     var url = `/graph/${text}`;
     d3.json(url).then(function(response){
         var trace1 = {
-            x: [text],
+            x: ["Budget"],
             y: [response.budget[text]],
             name: 'Budget',
             type: 'bar',
@@ -22,7 +22,7 @@ function buildBarChart() {
         };
         
         var trace2 = {
-            x: [text],
+            x: ["Revenue"],
             y: [response.revenue[text]],
             name: 'Revenue',
             type: 'bar',
@@ -34,6 +34,7 @@ function buildBarChart() {
         var data = [trace1, trace2];
     
         var layout = {
+            title: text,
             barmode: 'group',
             yaxis: {
                 tickformat: ',',
