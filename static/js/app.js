@@ -1,7 +1,20 @@
+// Initiates Animate On Scroll
 AOS.init();
+
+function movieName() {
+    /**
+ /* @return {string} */
+  const selector = d3.select("#movie");
+  const movie = selector.property("value");
+  return movie
+};
 
 function callAPI(movie) {
   // Separated API call to avoid multiple calls when building the dashboard.
+  /**
+ * @param {string=} movie
+ /* @return {Object} */
+
   var url = `/graph/${movie}`;
   var response = d3.json(url).then(function(response) {
     return response;
@@ -70,8 +83,13 @@ function buildBarChart(movie, apiCall) {
   });
 }
 
-// Creates the table below the bar chart showing the stats for the movie
 function addTable(movie, apiCall) {
+  /**
+   // Creates the table below the bar chart showing the stats for the movie
+   * @param {string=} movie
+   * @param {Object=} apiCall
+ /* @return {} */
+
   // Check if the table already exists and remove it if it does.
   if (document.contains(document.getElementById("tabled"))) {
     document.getElementById("tabled").remove();
@@ -107,6 +125,11 @@ function addTable(movie, apiCall) {
 }
 
 function starRating(movie, response) {
+  /**
+ * @param {string=} movie
+ * @param {Object=} apiCall
+ /* @return {} */
+
   if (document.contains(document.getElementById("star"))) {
     document.getElementById("star").remove();
   }
@@ -165,8 +188,7 @@ function starRating(movie, response) {
 
 function doAll() {
   d3.event.preventDefault();
-  const selector = d3.select("#movie");
-  const movie = selector.property("value");
+  const movie = movieName();
   const response = callAPI(movie);
   starRating(movie, response);
   buildBarChart(movie, response);
