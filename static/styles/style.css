@@ -189,6 +189,7 @@ input[type="submit"] {
   position: absolute;
   bottom: 0;
   left: 0;
+  padding: 10%;
 }
 
 .stars-outer {
@@ -238,7 +239,18 @@ td {
   padding: 15px;
 }
 
+#enterMovie {
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
 /* Start of media queries */
+
+@media (max-width: 1440px) { 
+  .send_movie {
+    margin: 10px;
+  }
+}
 @media (max-width: 1024px) {
   .blanks {
     display: none;
@@ -254,6 +266,7 @@ td {
 
   .input-group {
     position: relative;
+    padding: 5%;
   }
 
   #mainTitle {
