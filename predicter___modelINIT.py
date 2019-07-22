@@ -1,6 +1,6 @@
 # Recreates the model from scratch --- takes ~10 hours
 
-import json, math, time
+import json, math, time, pickle
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -196,6 +196,8 @@ while youSure not in ("y", "n"):
             test_X = df_test[df_clean.columns.difference(['Bechdel_Test'])]
             test_y = df_test['winner']
             logisticRegr.fit(train_X, train_y)
+            filename = '99new.sav'
+            pickle.dump(logisticRegr, open(filename, 'wb'))
             sumAccuracy.append(logisticRegr.score(test_X, test_y))
         avg = np.mean(sumAccuracy)
         print(f"\n\n3-Fold Cross Validation Mean Score: {avg}\n\n")

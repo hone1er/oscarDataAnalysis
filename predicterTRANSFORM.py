@@ -7,7 +7,7 @@ import pandas as pd
 
 pd.set_option("display.max_colwidth", -1)
 
-
+#! Test object "d" below to confirm structure needed for predict
 d = {
   "winner": "1",
   "cast": [
@@ -123,7 +123,6 @@ d = {
 
 dff = pd.DataFrame(data=d)
 #print(dff)
-
 
 def feature_engineering(column_name, df, json_name):
 
