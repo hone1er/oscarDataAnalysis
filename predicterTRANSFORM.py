@@ -8,96 +8,130 @@ import pandas as pd
 pd.set_option("display.max_colwidth", -1)
 
 
-d = {"winner": "1",
-    "cast": [[{
+d = {
+  "winner": "1",
+  "cast": [
+    [
+      {
         "character": "Woody",
         "gender": "2",
         "name": "Tom Hanks",
         "order": "0"
-    }, {
+      },
+      {
         "character": "Buzz Lightyear",
         "gender": "2",
         "name": "Tim Allen",
         "order": "1"
-    }, {
+      },
+      {
         "character": "Bo Peep",
         "gender": "0",
         "name": "Annie Potts",
         "order": "2"
-    }, {
+      },
+      {
         "character": "Forky",
         "gender": "2",
         "name": "Tony Hole",
         "order": "3"
-    }]],
-    "crew": [[{
+      }
+    ]
+  ],
+  "crew": [
+    [
+      {
         "department": "Art",
         "gender": "2",
         "job": "Director",
         "name": "Josh Cooley"
-    }, {
+      },
+      {
         "department": "Writing",
         "gender": "2",
         "job": "Screenplay",
         "name": "John Lasseter"
-    }, {
+      },
+      {
         "department": "Writing",
         "gender": "2",
         "job": "Screenplay",
         "name": "Andrew Stanton"
-    }, {
+      },
+      {
         "department": "Writing",
         "gender": "0",
         "job": "Screenplay",
         "name": "Valerie LaPointe"
-    }]],
-    "genres": [[{
+      }
+    ]
+  ],
+  "genres": [
+    [
+      {
         "name": "Adventure"
-        }, {
+      },
+      {
         "name": "Animation"
-        }, {
+      },
+      {
         "name": "Comedy"
-    }]],
-    "keywords": [[{
+      }
+    ]
+  ],
+  "keywords": [
+    [
+      {
         "name": "bo peep character"
-        }, {
+      },
+      {
         "name": "buzz lightyear character"
-        }, {
+      },
+      {
         "name": "woody character"
-        }, {
+      },
+      {
         "name": "fourth part"
-        }]],
-    "overview": "When a new toy called \"Forky\" joins Woody and the gang, a road trip alongside old and new friends reveals how big the world can be for a toy.",
-    "production_companies": [[{
+      }
+    ]
+  ],
+  "overview": "When a new toy called \"Forky\" joins Woody and the gang, a road trip alongside old and new friends reveals how big the world can be for a toy.",
+  "production_companies": [
+    [
+      {
         "name": "Pixar Animation Studios"
-        }, {
+      },
+      {
         "name": "Walt Disney Pictures"
-        }]],
-    "production_countries": [{
-        "iso_3166_1": "US",
-        "name": "United States of America"
-        }],
-     "release_date": "2019-06-21",
-     "runtime": "100",
-     "status": "Released",
-     "title": "Toy Story 4",
-     "Bechdel_Test": "1"
+      }
+    ]
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2019-06-21",
+  "runtime": "100",
+  "status": "Released",
+  "title": "Toy Story 4",
+  "Bechdel_Test": "1"
 }
 
 #ast.literal_eval(d)
 
 dff = pd.DataFrame(data=d)
-#dff
+#print(dff)
+
 
 def feature_engineering(column_name, df, json_name):
 
     name = {}
     for item in df[column_name]:
-        print(item)
-        group = json.loads(str(item))
-        print(group)
+        print("\n\nItem: ", item, "\n\n")
+        group = json.loads(item)
         for it in group:
-            print(it)
             if it[json_name] not in name:
                 name[it[json_name]] = 1
             else:
