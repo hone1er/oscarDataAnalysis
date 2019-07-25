@@ -2,12 +2,12 @@
 AOS.init();
 
 function movieName() {
-    /**
+  /**
  /* @return {string} */
   const selector = d3.select("#movie");
   const movie = selector.property("value");
-  return movie
-};
+  return movie;
+}
 
 function callAPI(movie) {
   // Separated API call to avoid multiple calls when building the dashboard.
@@ -79,7 +79,7 @@ function buildBarChart(movie, apiCall) {
         }
       }
     };
-    Plotly.newPlot("myDiv", data, layout, { responsive: true });
+    Plotly.newPlot("barChart", data, layout, { responsive: true });
   });
 }
 
@@ -109,7 +109,8 @@ function addTable(movie, apiCall) {
         "Revenue",
         "Popularity",
         "Vote Average",
-        "Vote Count"
+        "Vote Count",
+        "Genre(s)"
       ])
       .enter()
       .append("th")
@@ -118,8 +119,39 @@ function addTable(movie, apiCall) {
       });
     var row = tbody.append("tr");
     Object.entries(data).forEach(([key, value]) => {
-      var cell = tbody.append("td");
-      cell.text(value[movie].toLocaleString());
+      console.log(key);
+
+      var genres = [];
+      if (key === "genres") {
+        var cell = tbody.append("td");
+        eval(value[movie]).forEach(element => {
+          console.log(element.name);
+          genres.push(" " + element.name);
+        });
+        cell.text(genres);
+      } else if (key === "overview") {
+        if (document.contains(document.getElementById("description"))) {
+          document.getElementById("description").remove();
+        }
+        var description = d3
+          .select("#dashboard")
+          .append("div")
+          .lower()
+          .attr("id", "description")
+          .attr("class", "description");
+
+        var header = d3.select("#description")
+        .append("h2")
+        .text("OVERVIEW")
+        var paragraph = d3
+          .select("#description")
+          .append("p")
+          .attr("style", "color: #2a2a2a")
+          .text(value[movie]);
+      } else {
+        var cell = tbody.append("td");
+        cell.text(value[movie].toLocaleString());
+      }
     });
   });
 }
@@ -193,6 +225,8 @@ function doAll() {
   starRating(movie, response);
   buildBarChart(movie, response);
   addTable(movie, response);
+  d3.select(".charts")
+  .attr("style","display: block");
 }
 
 const filterbtn = d3.select("#filter-btn");

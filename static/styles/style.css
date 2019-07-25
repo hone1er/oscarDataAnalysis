@@ -49,7 +49,7 @@ input[type="submit"] {
 /* grid setup and styling */
 .box {
   text-align: center;
-  background-color: #444;
+  background-color: #f5f5f5;
   color: #2a2a2a;
   border-radius: 0px;
   padding: 20px;
@@ -59,6 +59,7 @@ input[type="submit"] {
 
 .charts {
   grid-area: charts;
+  display: none;
 }
 
 .data {
@@ -89,6 +90,7 @@ input[type="submit"] {
 
 .footer {
   grid-area: footer;
+  background-color: #444;
   color: #f5f5f5;
 }
 
@@ -122,6 +124,7 @@ input[type="submit"] {
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
 }
+
 /* Outer grid container */
 .wrapper {
   display: grid;
@@ -137,6 +140,43 @@ input[type="submit"] {
   background-color: #f5f5f5;
   color: #f5f5f5;
 }
+
+/* DASHBOARD grid container */
+.overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  grid-template-areas:
+  "stars description"
+  "tables description"
+  "bar bar";
+  color: #2a2a2a;
+}
+
+.description {
+  grid-area: description;
+  border: 1px solid #444;
+  margin: 15px;
+}
+
+.description p {
+  padding: 10px;
+}
+
+.table {
+  grid-area: tables;
+  margin-top: 15px;
+}
+
+.barChart {
+  grid-area: bar;
+}
+
+.starRating {
+  grid-area: stars;
+  margin-top: 15px
+}
+/*END DASHBOARD GRID LAYOUT*/
 
 /* NAVBAR STYLING */
 .navbar {
@@ -232,7 +272,7 @@ td {
 table {
   border-collapse: collapse;
   width: 100%;
-  color: #f5f5f5;
+  color: #2a2a2a;
   font-family: "Times New Roman", sans-serif;
 }
 
@@ -246,12 +286,26 @@ td {
   text-align: left;
 }
 
+#description {
+  padding: 20px;
+}
+
 /* Start of media queries */
 
-@media (max-width: 1440px) { 
+@media (max-width: 1440px) {
   .send_movie {
     margin: 10px;
   }
+
+  /* DASHBOARD grid container */
+.overview {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "stars"
+  "tables"
+  "description"
+  "bar";
+}
 }
 @media (max-width: 1024px) {
   .blanks {

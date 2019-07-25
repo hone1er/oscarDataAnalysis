@@ -21,7 +21,7 @@ def about():
 class Grapher:
     def __init__(self):
         file = os.path.join(os.path.dirname('__file__'),
-                            "resources/movieGraph.csv")
+                            "resources/movieGraph2.csv")
         self.df = pd.read_csv(file, index_col=['original_title', 'title'])
 
     def graph(self, movie):
