@@ -191,35 +191,3 @@ with tqdm(total=100) as pbar:
     time.sleep(0.25)
     #!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- !#
     #https://www.imdb.com/title/tt1979376/
-
-    imdbURL_base = "https://www.imdb.com/title/"
-    imdbURL = str(imdbURL_base + tconst[1:])
-
-    def init_splinter():
-        '''
-        init_splinter() initializes a selenium chrome webdriver using a Tor proxy and returns it
-        as a splinter browser wrapped object.
-        '''
-        executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-        browser = Browser('chrome', **executable_path, headless=False, incognito=True)
-        return browser
-
-    def simmer_soup():
-        '''
-        simmer_soup() receives the browser object and returns the current page's parsed html as "Soup".
-        '''
-        html = browser.html
-        soup = bs(html, 'html.parser')
-        return html, soup
-
-    browser = init_splinter()
-    browser.visit(imdbURL)
-    html, soup = simmer_soup()
-    x = soup.find_all('h4', class_='inline')
-    y =[]
-    for y in x:
-        y.append(x.a)
-    z = []
-    for z in y:
-        z.append(y['href'])
-    print(z)
