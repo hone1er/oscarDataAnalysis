@@ -3,6 +3,8 @@
 import pandas as pd
 from tqdm import tqdm
 import time
+from splinter import Browser
+from bs4 import BeautifulSoup as bs
 #todo   return all fields needed for the prediction
 
 
@@ -142,11 +144,7 @@ with tqdm(total=100) as pbar:
 
     for crew in crew_directors:
         if crew[0] == " ":
-            print("\n", "        [!]      [!]      [!]      [!]      [!]")
-            print(f"[!] Prepending whitespace bug detected on: '{crew}'", "[!]", "\n")
             crew = crew[1:]
-            print(f"[!]             Fixed to: '{crew}'", "                  [!]")
-            print("        [!]      [!]      [!]      [!]      [!]", "\n")
         print("IMDB 'nconst': ", crew, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", merp.loc[crew], "\n")
 
     pbar.update(5)
@@ -161,11 +159,7 @@ with tqdm(total=100) as pbar:
 
     for crew in crew_writers:
         if crew[0] == " ":
-            print("\n", "        [!]      [!]      [!]      [!]      [!]")
-            print(f"[!] Prepending whitespace bug detected on: '{crew}'", "[!]", "\n")
             crew = crew[1:]
-            print(f"[!]             Fixed to: '{crew}'", "                  [!]")
-            print("        [!]      [!]      [!]      [!]      [!]", "\n")
         print("IMDB 'nconst': ", crew, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", merp.loc[crew], "\n")
 
     pbar.update(5)
@@ -182,11 +176,7 @@ with tqdm(total=100) as pbar:
     print("\n*****   All Genres")
     for genre in genres:
         if genre[0] == " ":
-            print("\n", "        [!]      [!]      [!]      [!]      [!]")
-            print(f"[!] Prepending whitespace bug detected on: '{genre}'", "[!]", "\n")
             genre = genre[1:]
-            print(f"[!]             Fixed to: '{genre}'", "                  [!]")
-            print("        [!]      [!]      [!]      [!]      [!]", "\n")
         print(genre)
     print("\n", genres, "\n")
 
@@ -200,3 +190,36 @@ with tqdm(total=100) as pbar:
     print("\nPrinting Production Companies..\n")
     time.sleep(0.25)
     #!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- !#
+    #https://www.imdb.com/title/tt1979376/
+
+    imdbURL_base = "https://www.imdb.com/title/"
+    imdbURL = str(imdbURL_base + tconst[1:])
+
+    def init_splinter():
+        '''
+        init_splinter() initializes a selenium chrome webdriver using a Tor proxy and returns it
+        as a splinter browser wrapped object.
+        '''
+        executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
+        browser = Browser('chrome', **executable_path, headless=False, incognito=True)
+        return browser
+
+    def simmer_soup():
+        '''
+        simmer_soup() receives the browser object and returns the current page's parsed html as "Soup".
+        '''
+        html = browser.html
+        soup = bs(html, 'html.parser')
+        return html, soup
+
+    browser = init_splinter()
+    browser.visit(imdbURL)
+    html, soup = simmer_soup()
+    x = soup.find_all('h4', class_='inline')
+    y =[]
+    for y in x:
+        y.append(x.a)
+    z = []
+    for z in y:
+        z.append(y['href'])
+    print(z)
