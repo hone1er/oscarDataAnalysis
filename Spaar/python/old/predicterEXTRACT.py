@@ -24,32 +24,32 @@ with tqdm(total=100) as pbar:
     #*   The `title.basics` db object:
     #*   Declares $tconst (IMDB's media PK) as a string & $genres as a string array.
     print("\n\n\nMunging title.basics.tsv..")
-    herp = pd.read_csv("/Users/nicolespaar/Documents/title.basics.tsv", sep='\t', header=0, low_memory=False)
+    titleBasics = pd.read_csv("/Users/nicolespaar/Documents/title.basics.tsv", sep='\t', header=0, low_memory=False)
     pbar.update(10)
-    herpArray = herp[herp['primaryTitle'] == movieToSearch]
-    herpRow = herpArray[herpArray['titleType'] == 'movie']
-    tconst = herpRow.tconst.to_string(index=False)
-    genres = herpRow.genres.to_string(index=False).split(",")
+    titleBasicsArray = titleBasics[titleBasics['primaryTitle'] == movieToSearch]
+    titleBasicsRow = titleBasicsArray[titleBasicsArray['titleType'] == 'movie']
+    tconst = titleBasicsRow.tconst.to_string(index=False)
+    genres = titleBasicsRow.genres.to_string(index=False).split(",")
 
     #*   The `title.crew` db object:
     #*   Declares $crew_directors & $crew_writers as a string array.
     print("\nMunging title.crew.tsv..")
-    derp = pd.read_csv("/Users/nicolespaar/Documents/title.crew.tsv", sep='\t', header=0)
+    titleCrew = pd.read_csv("/Users/nicolespaar/Documents/title.crew.tsv", sep='\t', header=0)
     pbar.update(10)
-    derpRow = derp[derp['tconst'] == tconst[1:]]
-    crew_directors = derpRow.directors.to_string(index=False).split(",")
-    crew_writers = derpRow.writers.to_string(index=False).split(",")
+    titleCrewRow = titleCrew[titleCrew['tconst'] == tconst[1:]]
+    crew_directors = titleCrewRow.directors.to_string(index=False).split(",")
+    crew_writers = titleCrewRow.writers.to_string(index=False).split(",")
 
     #*   The `name.basics` db object:
     print("\nMunging name.basics.tsv..")
-    merp = pd.read_csv("/Users/nicolespaar/Documents/name.basics.tsv", sep='\t', header=0, index_col='nconst')
+    nameBasics = pd.read_csv("/Users/nicolespaar/Documents/name.basics.tsv", sep='\t', header=0, index_col='nconst')
     pbar.update(10)
 
     #*   The `title.principals` db object:
     print("\nMunging title.principals.tsv..")
-    plerp = pd.read_csv("/Users/nicolespaar/Documents/title.principals.tsv", sep='\t', header=0, index_col='nconst')
+    titlePrincipals = pd.read_csv("/Users/nicolespaar/Documents/title.principals.tsv", sep='\t', header=0, index_col='nconst')
     pbar.update(10)
-    plerpRow = plerp[plerp['tconst'] == tconst[1:]]
+    titlePrincipalsRow = titlePrincipals[titlePrincipals['tconst'] == tconst[1:]]
 
 
 
@@ -59,7 +59,7 @@ with tqdm(total=100) as pbar:
     print("\nSorting Cast..")
     time.sleep(0.25)
     #!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- !#
-    #*   Iterrows() on $plerpRow to sort/bin the cast actors' names & jobs from the cast non-actors'
+    #*   Iterrows() on $titlePrincipalsRow to sort/bin the cast actors' names & jobs from the cast non-actors'
     #*   names and jobs.
 
     cast_actors = []
@@ -67,7 +67,7 @@ with tqdm(total=100) as pbar:
     cast_other = []
     cast_other_jobs = []
 
-    for row in plerpRow.iterrows():
+    for row in titlePrincipalsRow.iterrows():
         x = row[1].category
         if (x in ('actor', 'actress')):
             cast_actors.append(row[0])
@@ -98,7 +98,7 @@ with tqdm(total=100) as pbar:
     #!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- !#
     #*   A for-loop executing as many times as the length of the $cast_actors list prints out all of
     #*   the relevant information. Also plugs in the current iterration's actor's `nconst` into the
-    #*   $merp db object (where `nconst` is the Index) to return a whole row/object relating to them.
+    #*   $nameBasics db object (where `nconst` is the Index) to return a whole row/object relating to them.
 
     print("\n*****   Primary Cast[ACTORS]")
     i = 0
@@ -107,14 +107,14 @@ with tqdm(total=100) as pbar:
     for i in range(iAmt):
         cast = cast_actors[i]
         job = cast_actors_jobs[i]
-        print("IMDB 'nconst': ", cast, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", merp.loc[cast], "\n")
+        print("IMDB 'nconst': ", cast, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", nameBasics.loc[cast], "\n")
         i += 1
 
     pbar.update(5)
 
     #*   A for-loop executing as many times as the length of the $cast_other list prints out all of
     #*   the relevant information. Also plugs in the current iterration's actor's `nconst` into the
-    #*   $merp db object (where `nconst` is the Index) to return a whole row/object relating to them.
+    #*   $nameBasics db object (where `nconst` is the Index) to return a whole row/object relating to them.
 
     print("\n*****   Primary Cast[NON-ACTORS]")
     i = 0
@@ -123,7 +123,7 @@ with tqdm(total=100) as pbar:
     for i in range(iAmt):
         cast = cast_other[i]
         job = cast_other_jobs[i]
-        print("IMDB 'nconst': ", cast, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", merp.loc[cast], "\n")
+        print("IMDB 'nconst': ", cast, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", nameBasics.loc[cast], "\n")
         i += 1
 
     pbar.update(5)
@@ -136,7 +136,7 @@ with tqdm(total=100) as pbar:
     print("\nPrinting Crew..")
     time.sleep(0.25)
     #!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- !#
-    #*   A for-loop on $crew_directors (the 2 columns of the $merp db object) to
+    #*   A for-loop on $crew_directors (the 2 columns of the $nameBasics db object) to
     #*   print out all of the relevant information. Also plugs in the current iterration's crew's
     #*   `nconst` to return a whole row/object relating to them.
 
@@ -145,13 +145,13 @@ with tqdm(total=100) as pbar:
     for crew in crew_directors:
         if crew[0] == " ":
             crew = crew[1:]
-        print("IMDB 'nconst': ", crew, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", merp.loc[crew], "\n")
+        print("IMDB 'nconst': ", crew, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", nameBasics.loc[crew], "\n")
 
     pbar.update(5)
 
 
 
-    #*   A for-loop on $crew_directors (the 2 columns of the $merp db object) to
+    #*   A for-loop on $crew_directors (the 2 columns of the $nameBasics db object) to
     #*   print out all of the relevant information. Also plugs in the current iterration's crew's
     #*   `nconst` to return a whole row/object relating to them.
 
@@ -160,7 +160,7 @@ with tqdm(total=100) as pbar:
     for crew in crew_writers:
         if crew[0] == " ":
             crew = crew[1:]
-        print("IMDB 'nconst': ", crew, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", merp.loc[crew], "\n")
+        print("IMDB 'nconst': ", crew, "\n", "Job: ", job, "\n\n", "Cast Object: ", "\n", nameBasics.loc[crew], "\n")
 
     pbar.update(5)
 
