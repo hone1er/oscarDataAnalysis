@@ -14,10 +14,12 @@ def index():
 def about():
     return render_template('about.html')
 
+@app.route('/intro')
+def intro():
+    return render_template('intro.html')
+
 # API call for bar chart and tables
 ###############################################################
-
-
 class Grapher:
     def __init__(self):
         file = os.path.join(os.path.dirname('__file__'),

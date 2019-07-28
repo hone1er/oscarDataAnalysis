@@ -30,6 +30,10 @@
 
 
     }}">
+    <link type="text/css" rel="stylesheet" href="{{url_for("static", filename="styles/flexselect.css")
+
+
+    }}">
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -62,40 +66,30 @@
         </nav>
       </div>
 
-      <div class="box header">
+      
         {% block header %}{% endblock %}
-      </div>
-      <div class="box content">
+  
         {% block content %}{% endblock %}
-      </div>
-      <!--BLANKS is the locations with background images-->
-      <div class="blanks content2"></div>
-      <div class="blanks content3"></div>
-      <!--BLANKS is the locations with background images-->
-      <div class="box sidebar">
-        {% block sidebar %}{% endblock %}
-      </div>
-      <div class="box data">
-        {% block data %}{% endblock %}
-      </div>
 
-      <div class="box charts">   
+        {% block sidebar %}{% endblock %}
+        {% block data %}{% endblock %}
         {% block charts %}{% endblock %}
-        </div>
-      <div class="box footer">
         {% block footer %}{% endblock %}
       </div>
+      {% block about %}{% endblock %}
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.44.4/plotly.min.js"></script>
     <!-- jQuery CDN -->
     <script
       type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"
+      src="https://code.jquery.com/jquery-2.1.4.min.js"
     ></script>
+    <script src="{{ url_for('static', filename='js/liquidmetal.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/jquery.flexselect.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.44.4/plotly.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script src="{{ url_for('static', filename='js/autoComplete.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
   </body>
 </html>

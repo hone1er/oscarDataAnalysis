@@ -4,7 +4,7 @@ AOS.init();
 function movieName() {
   /**
  /* @return {string} */
-  const selector = d3.select("#movie");
+  const selector = d3.select("#selDataset");
   const movie = selector.property("value");
   return movie;
 }
@@ -15,8 +15,8 @@ function callAPI(movie) {
  * @param {string=} movie
  /* @return {Object} */
 
-  var url = `/graph/${movie}`;
-  var response = d3.json(url).then(function(response) {
+  const url = `/graph/${movie}`;
+  const response = d3.json(url).then(function(response) {
     return response;
   });
   return response;
@@ -24,7 +24,7 @@ function callAPI(movie) {
 
 function buildBarChart(movie, apiCall) {
   apiCall.then(function(response) {
-    var trace1 = {
+    const trace1 = {
       x: ["Budget"],
       y: [response.budget[movie]],
       width: [0.4],
@@ -36,7 +36,7 @@ function buildBarChart(movie, apiCall) {
       }
     };
 
-    var trace2 = {
+    const trace2 = {
       x: ["Revenue"],
       y: [response.revenue[movie]],
       width: [0.4],
@@ -48,9 +48,11 @@ function buildBarChart(movie, apiCall) {
       }
     };
 
-    var data = [trace1, trace2];
+    const data = [trace1, trace2];
 
-    var layout = {
+    const layout = {
+      paper_bgcolor: "#f5f5f5",
+      plot_bgcolor: "rgba(0, 0, 250, .02)",
       title: movie,
       titlefont: {
         size: 34,
@@ -95,12 +97,12 @@ function addTable(movie, apiCall) {
     document.getElementById("tabled").remove();
   }
   apiCall.then(function(data) {
-    var table = d3
+    const table = d3
       .select("#table")
       .append("table")
       .attr("id", "tabled");
-    var tbody = table.append("tbody");
-    var header = table.append("thead").append("tr");
+    const tbody = table.append("tbody");
+    const header = table.append("thead").append("tr");
     header
       .selectAll("th")
       .data([
@@ -114,18 +116,16 @@ function addTable(movie, apiCall) {
       ])
       .enter()
       .append("th")
+      .attr("style", "font-family: Roboto")
       .text(function(d) {
         return d;
       });
-    var row = tbody.append("tr");
+    const row = tbody.append("tr");
     Object.entries(data).forEach(([key, value]) => {
-      console.log(key);
-
-      var genres = [];
+      const genres = [];
       if (key === "genres") {
-        var cell = tbody.append("td");
+        const cell = tbody.append("td");
         eval(value[movie]).forEach(element => {
-          console.log(element.name);
           genres.push(" " + element.name);
         });
         cell.text(genres);
@@ -133,23 +133,24 @@ function addTable(movie, apiCall) {
         if (document.contains(document.getElementById("description"))) {
           document.getElementById("description").remove();
         }
-        var description = d3
+        const description = d3
           .select("#dashboard")
           .append("div")
           .lower()
           .attr("id", "description")
           .attr("class", "description");
 
-        var header = d3.select("#description")
-        .append("h2")
-        .text("OVERVIEW")
-        var paragraph = d3
+        const header = d3
+          .select("#description")
+          .append("h2")
+          .text("OVERVIEW");
+        const paragraph = d3
           .select("#description")
           .append("p")
           .attr("style", "color: #2a2a2a")
           .text(value[movie]);
       } else {
-        var cell = tbody.append("td");
+        const cell = tbody.append("td");
         cell.text(value[movie].toLocaleString());
       }
     });
@@ -166,12 +167,12 @@ function starRating(movie, response) {
     document.getElementById("star").remove();
   }
   const rate = response.then(function(rate) {
-    var table = d3
+    const table = d3
       .select("#starRating")
       .append("table")
       .attr("id", "star");
-    var tbody = table.append("tbody");
-    var header = table.append("thead").append("tr");
+    const tbody = table.append("tbody");
+    const header = table.append("thead").append("tr");
     header
       .selectAll("th")
       .data(["Movie", "Rating"])
@@ -180,23 +181,23 @@ function starRating(movie, response) {
       .text(function(d) {
         return d;
       });
-    var row = tbody.append("tr").attr("class", "hotel_a");
+    const row = tbody.append("tr").attr("class", "hotel_a");
     Object.entries(rate).forEach(([key, value]) => {
       if (key == "vote_average") {
-        var text = [movie, value[movie].toLocaleString()];
-        var counter = 0;
+        const text = [movie, value[movie].toLocaleString()];
+        let counter = 0;
         text.forEach(element => {
           if (counter === 0) {
-            var cell = row.append("td");
+            const cell = row.append("td");
             cell.text(element);
             counter++;
           } else if (counter === 1) {
-            var cell = row
+            const cell = row
               .append("td")
               .append("div")
               .attr("class", "stars-outer");
-            var outer = cell.append("div").attr("class", "stars-inner");
-            var score = rate.vote_average[movie] / 2;
+            const outer = cell.append("div").attr("class", "stars-inner");
+            const score = rate.vote_average[movie] / 2;
             const ratings = {
               hotel_a: score
             };
@@ -225,9 +226,47 @@ function doAll() {
   starRating(movie, response);
   buildBarChart(movie, response);
   addTable(movie, response);
-  d3.select(".charts")
-  .attr("style","display: block");
+  d3.select(".charts").attr("style", "display: block");
 }
 
 const filterbtn = d3.select("#filter-btn");
 filterbtn.on("click", doAll);
+
+// Scroll on Click
+$(function() {
+  $("a[href*=#]:not([href=#])").click(function() {
+    if (
+      location.pathname.replace(/^\//, "") ==
+        this.pathname.replace(/^\//, "") &&
+      location.hostname == this.hostname
+    ) {
+      let target = $(this.hash);
+      target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+      if (target.length) {
+        $("html,body").animate(
+          {
+            scrollTop: target.offset().top
+          },
+          500
+        );
+        return false;
+      }
+    }
+  });
+});
+
+// Create the cities dropdown menu
+function movies() {
+  const selector = d3.select("#selDataset");
+  const movies = allMovies;
+  movies.forEach(element => {
+    const row = selector.append("option").attr("value", element);
+    row.text(element);
+  });
+}
+
+movies();
+
+jQuery(document).ready(function() {
+  $("select.flexselect").flexselect();
+});
