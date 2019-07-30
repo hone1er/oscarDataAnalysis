@@ -363,6 +363,10 @@ td {
     margin-top: -5px;
   }
 
+  #dataHeader {
+    background-image: none;
+  }
+
   .input-group {
     position: relative;
     padding: 5%;

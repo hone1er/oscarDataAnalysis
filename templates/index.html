@@ -5,13 +5,18 @@
   </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link current" href="{{ url_for('intro') }}">
-      INTRO
-    </a>
-  </li>
+  <a class="nav-link current" href="{{ url_for('intro') }}">
+    INTRO
+  </a>
+</li>
 <li class="nav-item">
   <a class="nav-link current" href="{{ url_for('about') }}">
     ABOUT
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('data') }}">
+    DATA
   </a>
 </li>
 {% endblock %} {% block header %}
@@ -22,29 +27,26 @@
       <span id="analysis">Data Analysis</span>
     </h1>
     <div class="container-fluid nameform input-group">
-        <h3 id="enterMovie">ENTER A MOVIE TITLE:</h3>
-        <select id="selDataset" class="flexselect">
-            <option value="" selected disabled hidden></option>
-        </select> 
-        <center>
+      <h3 id="enterMovie">ENTER A MOVIE TITLE:</h3>
+      <select id="selDataset" class="flexselect">
+        <option value="" selected disabled hidden></option>
+      </select>
+      <center>
         <a href="#dashboard" style="color: #000000">
-            <button id="filter-btn" type="submit" class="send_movie">Search</button>
-          </a>
-        </center> 
-      </div>
+          <button id="filter-btn" type="submit" class="send_movie">
+            Search
+          </button>
+        </a>
+      </center>
+    </div>
   </div>
 </div>
 <!--BLANKS is the locations with background images-->
 <div class="blanks content2"></div>
 <div class="blanks content3"></div>
 <!--BLANKS is the locations with background images-->
-{% endblock %}
-
-{% block content %}
-
-{% endblock %} {% block data %}
-
-{% endblock %} {% block charts %}
+{% endblock %} {% block content %} {% endblock %} {% block data %} {% endblock
+%} {% block charts %}
 <div class="box charts">
   <div id="dashboard" class="container-fluid overview">
     <div id="table" class="table"></div>
@@ -56,4 +58,13 @@
 <div class="box footer">
   Oscar Analysis &copy;2019
 </div>
-{% endblock %}
+{% endblock %} {% block scripts %}
+<script
+  src="{{ url_for('static', filename='js/liquidmetal.js') }}"
+  type="text/javascript"
+></script>
+<script
+  src="{{ url_for('static', filename='js/jquery.flexselect.js') }}"
+  type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/autoComplete.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>{% endblock %}

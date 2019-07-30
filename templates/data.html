@@ -1,0 +1,131 @@
+{% extends "layout.html" %} {% block navblock %}
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('index') }}">
+    HOME
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('intro') }}">
+    INTRO
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('about') }}">
+    ABOUT
+  </a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link current" href="{{ url_for('data') }}">
+    DATA
+  </a>
+</li>
+{% endblock %} {% block header %}
+<div id="dataHeader" class="box header" style="height: 100%;">
+  <div data-aos="fade-down">
+    <h2 class="titles">INTRODUCTION:</h2>
+    <p>
+      The Oscars (also confusingly referred to as the Academy Awards) is a big
+      awards ceremony in the eyes of Hollywood. Winning an Oscar is a sign of
+      high status and recognition. How does one achieve such an award and is the
+      academy fully transparent about the path to this esteemed recognition? We
+      are here to find out. In this analysis we will be diving into the various
+      factors that go into being nominated. We will first look at what the
+      Academy states is the way to become nominated and then, as data geeks, we
+      will hunt for the data to back-up or debunk the claims.
+    </p>
+</div>
+  <div data-aos="fade-up" data-aos-offset="200">
+    <h2 class="titles">DATASETS:</h2>
+    <p>
+      <a
+        href="https://www.kaggle.com/sebask/the-oscars-dataset-preparing-for-2017/data"
+        >Dataset 1</a
+      >
+      <a href="https://www.kaggle.com/tmdb/tmdb-movie-metadata/data"
+        >Dataset 2</a
+      >
+      <br />
+      We will be using the above data sets (along with web scraping to gather
+      years 2016-2019) to predict the best picture nomination.
+    </p>
+</div>
+  <div data-aos="fade-up">
+    <h2 class="titles">TOOLS:</h2>
+    <p>
+      Python's Beautiful Soup and Pandas library to web scrape/clean our data as
+      well as Tableau, Plotly, and D3.js to interactively visualise our data.
+      Further ideas we have are taking a look at each movies instagram
+      followers, Youtube trailer plays, and Netflix streams to see how they
+      trend throughout the year and whether or not there’s a correlation between
+      the top trenders and the nominees. (i.e. how has social media changed the
+      nomination game?)
+    </p>
+  </div>
+  <div data-aos="fade-up">
+    <h2 class="titles">VALUE:</h2>
+    <p>
+      We will be able to show which aspects are the most valuable in predicting
+      who will get nominated for a Oscar. Being nominated for an Oscar can make
+      a huge difference in the financial prospects of the directors, actors, and
+      everyone involved. With the understanding that we unearth, those in the
+      movie business will be able to be more strategic with their resources
+      because they’ll understand what will get them the most bang for their
+      marketing buck.
+    </p>
+  </div>
+  <div id="myDiv"></div>
+</div>
+{% endblock %} {% block content %}
+<div class="content">
+<div
+class="tableauPlaceholder"
+id="viz1564450934416"
+style="position: relative"
+>
+<noscript
+  ><a href="#"
+    ><img
+      alt=" "
+      src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;HT&#47;HT2DSMMH8&#47;1_rss.png"
+      style="border: none"/></a></noscript
+><object class="tableauViz" style="display:none;"
+  ><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+  <param name="embed_code_version" value="3"/>
+  <param name="path" value="shared&#47;HT2DSMMH8"/>
+  <param name="toolbar" value="yes"/><param
+    name="static_image"
+    value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;HT&#47;HT2DSMMH8&#47;1.png"/>
+  <param name="animate_transition" value="yes"/><param
+    name="display_static_image"
+    value="yes"/><param name="display_spinner" value="yes"/><param
+    name="display_overlay"
+    value="yes"/><param name="display_count" value="yes"
+/></object>
+</div>
+<script type="text/javascript">
+var divElement = document.getElementById("viz1564450934416");
+var vizElement = divElement.getElementsByTagName("object")[0];
+vizElement.style.minWidth = "420px";
+vizElement.style.maxWidth = "650px";
+vizElement.style.width = "100%";
+vizElement.style.minHeight = "587px";
+vizElement.style.maxHeight = "887px";
+vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+var scriptElement = document.createElement("script");
+scriptElement.src =
+  "https://public.tableau.com/javascripts/api/viz_v1.js";
+vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+<div class='tableauPlaceholder' id='viz1564451113521' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W6&#47;W6NNJYMXW&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;W6NNJYMXW' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W6&#47;W6NNJYMXW&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1564451113521');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+</div>
+{% endblock %} {% block data %} {% endblock%} {% block charts %}
+<div class="box charts">
+
+</div>
+{% endblock %} {% block footer %}
+<div class="box footer">
+  Oscar Analysis &copy;2019
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dataPlotly.js') }}"></script>
+{% endblock %}

@@ -9,10 +9,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/data')
+def data():
+    return render_template('data.html')
+
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 @app.route('/intro')
 def intro():
@@ -20,6 +25,8 @@ def intro():
 
 # API call for bar chart and tables
 ###############################################################
+
+
 class Grapher:
     def __init__(self):
         file = os.path.join(os.path.dirname('__file__'),

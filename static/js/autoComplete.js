@@ -974,7 +974,6 @@ var allMovies = [
   "Gods and Monsters",
   "Gods of Egypt",
   "Godsend",
-  "Godzilla 2000",
   "Going the Distance",
   "GoldenEye",
   "Goldfinger",
@@ -2038,7 +2037,6 @@ var allMovies = [
   "Sherlock Holmes",
   "Sherlock Holmes: A Game of Shadows",
   "Sherrybaby",
-  "Shin Godzilla",
   "Sholem Aleichem: Laughing In The Darkness",
   "Shooter",
   "Shooting Fish",
@@ -3226,3 +3224,18 @@ var allMovies = [
   "xXx: State of the Union",
   "Æon Flux"
 ];
+
+// Create the cities dropdown menu
+function movies() {
+  const selector = d3.select(".flexselect");
+  const movies = allMovies;
+  movies.forEach(element => {
+    const row = selector.append("option").attr("value", element);
+    row.text(element);
+  });
+}
+movies();
+
+jQuery(document).ready(function() {
+  $("select.flexselect").flexselect();
+});
