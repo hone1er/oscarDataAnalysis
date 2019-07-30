@@ -10,13 +10,13 @@
   </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link current" href="{{ url_for('about') }}">
-    ABOUT
+  <a class="nav-link current" href="{{ url_for('data') }}">
+    DATA
   </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link current" href="{{ url_for('data') }}">
-    DATA
+  <a class="nav-link current" href="{{ url_for('about') }}">
+    ABOUT
   </a>
 </li>
 {% endblock %} {% block header %}
@@ -32,7 +32,7 @@
         <option value="" selected disabled hidden></option>
       </select>
       <center>
-        <a href="#dashboard" style="color: #000000">
+        <a href="#table" style="color: #000000">
           <button id="filter-btn" type="submit" class="send_movie">
             Search
           </button>

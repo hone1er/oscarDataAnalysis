@@ -325,6 +325,19 @@ td {
 /* END ABOUT PAGE STYLING */
 /* Start of media queries */
 
+/* DATA PAGE */
+#myDiv {
+  margin: 10px 150px
+}
+
+#actressP {
+  margin: 10px 200px;
+  font-size: 14px;
+}
+
+
+/**/
+
 @media (max-width: 1440px) {
   .send_movie {
     margin: 10px;
@@ -367,6 +380,10 @@ td {
     background-image: none;
   }
 
+  #myDiv {
+    margin: 10px 20px
+  }
+
   .input-group {
     position: relative;
     padding: 5%;
@@ -406,6 +423,10 @@ td {
 
   #aboutHeader h1 {
     font-size: 3em;
+  }
+
+  #myDiv {
+    margin: 10 0px
   }
 
   .blanks {
