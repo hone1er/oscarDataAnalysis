@@ -4,6 +4,7 @@ AOS.init();
 function movieName() {
   /**
  /* @return {string} */
+
   const selector = d3.select("#selDataset");
   const movie = selector.property("value");
   return movie;
@@ -23,6 +24,11 @@ function callAPI(movie) {
 }
 
 function buildBarChart(movie, apiCall) {
+  /**
+   * @param {string=} movie
+   * @param {object=} apiCall
+  /* Creates a graph using Plotly.js */
+
   apiCall.then(function(response) {
     const trace1 = {
       x: ["Budget"],
@@ -51,7 +57,7 @@ function buildBarChart(movie, apiCall) {
     const data = [trace1, trace2];
 
     const layout = {
-      paper_bgcolor: "#f5f5f5",
+      paper_bgcolor: "#f3f3f3",
       plot_bgcolor: "rgba(0, 0, 250, .02)",
       title: movie,
       titlefont: {

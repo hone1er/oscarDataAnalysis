@@ -30,6 +30,7 @@
 
 
 
+
     }}">
   </head>
   <body>
@@ -57,29 +58,31 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav" style="float: right;">
-              <li class="nav-item">
-                  <a class="nav-link current" href="{{ url_for('index') }}">
-                    HOME
-                  </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link current" href="{{ url_for('intro') }}">
-                      INTRO
-                    </a>
-                  </li>
-                <li class="nav-item active">
-                  <a class="nav-link current" href="{{ url_for('about') }}">
-                    ABOUT
-                  </a>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link current" href="{{ url_for('index') }}">
+                HOME
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link current" href="{{ url_for('intro') }}">
+                INTRO
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link current" href="{{ url_for('about') }}">
+                ABOUT
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
     </div>
 
-    <div id="aboutHeader" class=" about aboutHeader">
-      <h1>ABOUT</h1>
-    </div>
+    <center>
+    <div id="aboutHeader" class=" about aboutHeader overlay">
+        <h1>ABOUT</h1>
+      </div>
+    </center>
     <div class="about aboutContent">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
