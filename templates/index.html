@@ -1,9 +1,59 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block navblock %}
+<li class="nav-item active">
+  <a class="nav-link current" href="{{ url_for('index') }}">
+    HOME
+  </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link current" href="{{ url_for('intro') }}">
+      INTRO
+    </a>
+  </li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('about') }}">
+    ABOUT
+  </a>
+</li>
+{% endblock %} {% block header %}
+<div class="box header">
+  <div data-aos="fade-up">
+    <h1 id="mainTitle">
+      <span id="academy">ACADEMY AWARDS</span> <br /><br />
+      <span id="analysis">Data Analysis</span>
+    </h1>
+    <div class="container-fluid nameform input-group">
+        <h3 id="enterMovie">ENTER A MOVIE TITLE:</h3>
+        <select id="selDataset" class="flexselect">
+            <option value="" selected disabled hidden></option>
+        </select> 
+        <center>
+        <a href="#dashboard" style="color: #000000">
+            <button id="filter-btn" type="submit" class="send_movie">Search</button>
+          </a>
+        </center> 
+      </div>
+  </div>
+</div>
+<!--BLANKS is the locations with background images-->
+<div class="blanks content2"></div>
+<div class="blanks content3"></div>
+<!--BLANKS is the locations with background images-->
+{% endblock %}
 
-{% block header %}This is the header{% endblock %}
+{% block content %}
 
-{% block content %}This is the main content{% endblock %}
+{% endblock %} {% block data %}
 
-{% block sidebar %}This is also content{% endblock %}
-
-{% block footer %}This is the footer{% endblock %}
+{% endblock %} {% block charts %}
+<div class="box charts">
+  <div id="dashboard" class="container-fluid overview">
+    <div id="table" class="table"></div>
+    <div id="barChart" class="barChart"></div>
+    <div id="starRating" class="starRating"></div>
+  </div>
+</div>
+{% endblock %} {% block footer %}
+<div class="box footer">
+  Oscar Analysis &copy;2019
+</div>
+{% endblock %}

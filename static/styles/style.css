@@ -1,64 +1,424 @@
+/* grid setup and styling */
+.box {
+  text-align: center;
+  background-color: #f8f8f8;
+  color: #2a2a2a;
+  border-radius: 0px;
+  padding: 25px;
+  font-size: 150%;
+  font-family: "Roboto", sans-serif;
+}
+
+.charts {
+  grid-area: charts;
+  display: none;
+  padding: 0px;
+}
+
+.data {
+  grid-area: data;
+  background-color: #c5b358e7;
+  position: relative;
+}
+
 .header {
-    grid-area: header;
+  grid-area: header;
+  background-color: #f8f8f8;
+  height: 94vh; /* You must set a specified height */
+  overflow: hidden;
 }
 
 .content {
-    grid-area: content;
+  grid-area: content;
+  background-color: #f8f8f8;
+  color: #2a2a2a;
+  padding: 25px;
 }
 
-.sidebar {
-    grid-area: sidebar;
+.content p {
+  padding: 0 20px 20px 20px;
+  font-family: "Hoefler Text 4r", "Baskerville Old Face", "Hoefler Text",
+    "Times New Roman", serif;
 }
 
 .footer {
-    grid-area: footer;
+  grid-area: footer;
+  background-color: #444;
+  color: #f8f8f8;
+  box-shadow: rgba(78, 78, 78, 0.301) 2px -2px 2px 2px;
 }
 
 .navbox {
-    grid-area: nav;
+  grid-area: nav;
+  overflow: hidden;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #990d0d; /* Backup for EDGE browser */
+  background-color: #990d0de7;
+  color: #f8f8f8;
+  box-shadow: rgba(78, 78, 78, 0.301) 2px 2px 2px 2px;
+}
+
+.sidebar a {
+  color: #c5b358;
+}
+
+.content2 {
+  grid-area: b1;
+  background-image: url(../img/unsplashTheater.jpg);
+  box-shadow: rgba(78, 78, 78, 0.301) 2px 2px 2px 2px;
+}
+
+.content3 {
+  grid-area: b2;
+  background-image: url(../img/oscarSmoke.jpg);
+  box-shadow: rgba(78, 78, 78, 0.301) -2px 2px 2px 2px;
+}
+
+.content2,
+.content3 {
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+/* Outer grid container */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0px 5px;
+  grid-template-areas:
+    "nav nav  nav nav nav  nav nav"
+    "b1 b1 header header header b2 b2"
+    "charts charts charts charts charts charts charts"
+    " sidebar sidebar content content content content content"
+    "sidebar sidebar content content content content content"
+    " footer footer footer footer footer footer footer";
+  background-color: #f8f8f8;
+  color: #f8f8f8;
+}
+
+/* DASHBOARD grid container */
+#dashboard {
+  background-color: rgba(82, 82, 82, 0.082);
+  padding: 25px;
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 5px;
+  grid-template-areas:
+    "stars stars"
+    "tables tables"
+    "description bar";
+  color: #2a2a2a;
+}
+
+.description {
+  grid-area: description;
+  margin: 0 5px 0 0;
+  box-shadow: rgba(78, 78, 78, 0.192) 2px 2px 2px 2px,
+    rgba(255, 255, 255, 0.281) 2px 2px 2px 2px inset;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+}
+
+.description p {
+  padding: 10px;
+  font-size: 0.9em;
+  margin-top: 15px;
+}
+
+.svg-container {
+  box-shadow: rgba(78, 78, 78, 0.192) 2px 2px 2px 2px;
+  border-radius: 10px;
+  margin: 0 0 0 5px;
+}
+
+.main-svg {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.table {
+  grid-area: tables;
+  margin-top: 15px;
+}
+
+.barChart {
+  grid-area: bar;
+}
+
+.starRating {
+  grid-area: stars;
+  margin-top: 15px;
+  box-shadow: rgba(88, 88, 88, 0.37) 2px 2px 2px,
+    rgba(102, 102, 102, 0.226) -1px -1px 2px 1px;
+  border-radius: 10px;
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}
+
+table,
+td,
+th {
+  text-align: center;
+}
+
+td {
+  font-family: "roboto", sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  width: 100%;
+  color: #2a2a2a;
+  font-family: "Times New Roman", sans-serif;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+#tabled {
+  font-family: "Roboto";
+  font-size: 0.95em;
+}
+
+#star {
+  background-color: #444;
+  color: #f8f8f8;
+}
+/*END DASHBOARD GRID LAYOUT*/
+
+/* NAVBAR STYLING */
+.navbar {
+  margin-bottom: 0px;
+}
+
+.navbar-inverse {
+  border: none;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #f8f8f8;
+  letter-spacing: 0.1em;
 }
 
 #navbox {
-    padding: 0px;
-    background-color: #222
+  padding: 0px;
+  background-color: #222;
 }
 
 #navbox a {
-    margin-top: 25px;
-    background-color: #222
+  background-color: #222;
+}
+/* End of NAVBAR STYLING */
+
+/* Headers  for paragraphs and rules */
+.titles {
+  letter-spacing: 0.4em;
 }
 
+.rules {
+  font-family: "Times New Roman", Times, serif;
+}
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+/* "Academy Awards Data Analysis" */
+#mainTitle {
+  margin-top: 200px;
+  color: #2a2a2a;
+}
+
+#analysis {
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 0.2em;
+}
+
+#academy {
+  letter-spacing: 0.5em;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+/**/
+/**/
+/**/
+.input-group {
+  padding: 10%;
+}
+
+#enterMovie {
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+#filter-btn {
+  margin-top: 10px;
+}
+
+#description {
+  padding: 20px;
+  letter-spacing: 0.01em;
+}
+
+#description h2 {
+  letter-spacing: 0.09em;
+}
+
+/* ABOUT PAGE STYLING */
+#aboutHeader {
+  background-image: url(../img/unsplashTheater.jpg);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  height: 100vh;
+  margin-top: -20px;
+  text-align: center;
+  position: relative;
+}
+
+#aboutHeader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  background: rgba(46, 46, 46, 0.315);
+}
+
+#aboutHeader h1 {
+  color: #f8f8f8;
+  letter-spacing: 0.3em;
+  padding-top: 45vh;
+  font-size: 4em;
+}
+
+/* END ABOUT PAGE STYLING */
+/* Start of media queries */
+
+@media (max-width: 1440px) {
+  .send_movie {
+    margin: 10px;
+  }
+
+  /* DASHBOARD grid container */
+  .overview {
+    grid-template-columns: 1fr;
     grid-template-areas:
-    "nav nav nav nav"
-    "header header header header"
-    "content content content sidebar"
-    " footer footer footer footer";
-    background-color: #fff;
-    color: #444;
-  }
-  
-  .box {
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
+      "stars"
+      "tables"
+      "description"
+      "bar";
+    padding: 0;
   }
 
-  @media (max-width: 768px) {
-    .wrapper {
-        grid-template-columns: 1fr;
-        grid-gap: 0px;
-        grid-template-areas:
-        "nav"
-        "header"
-        "content"
-        "sidebar"
-        " footer";
-    }
+  .charts {
+    padding: 0;
   }
+
+  .description {
+    margin: 0 0 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .blanks {
+    display: none;
+  }
+
+  .header {
+    background-image: url(../img/unsplashTheater.jpg);
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    margin-top: -5px;
+  }
+
+  .input-group {
+    position: relative;
+    padding: 5%;
+    z-index: 2;
+    color: #ffffff;
+  }
+
+  #mainTitle {
+    color: #f8f8f8;
+  }
+
+  .sidebar {
+    align-content: flex-end;
+  }
+
+  .wrapper {
+    grid-gap: 0px;
+    grid-template-areas:
+      "nav nav  nav nav nav  nav nav"
+      "header header header header header header header"
+      "charts charts charts charts charts charts charts"
+      " sidebar sidebar content content content content content"
+      "sidebar sidebar content content content content content"
+      "data data data data data data data"
+      " footer footer footer footer footer footer footer";
+  }
+  #enterMovie {
+    color: #f8f8f8;
+  }
+}
+
+@media (max-width: 768px) {
+  #dashboard {
+    box-shadow: none;
+    padding: 0px;
+  }
+
+  #aboutHeader h1 {
+    font-size: 3em;
+  }
+
+  .blanks {
+    display: none;
+  }
+
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-gap: 0px;
+    grid-template-areas:
+      "nav"
+      "blanks"
+      "header"
+      "charts"
+      "content"
+      "sidebar"
+      "data"
+      " footer";
+  }
+}
