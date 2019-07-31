@@ -326,7 +326,8 @@ td {
 /* Start of media queries */
 
 /* DATA PAGE */
-#myDiv {
+#actressBar,
+#myDiv2 {
   margin: 10px 150px
 }
 
@@ -380,7 +381,8 @@ td {
     background-image: none;
   }
 
-  #myDiv {
+  #actressBar,
+  #myDiv2 {
     margin: 10px 20px
   }
 
@@ -425,7 +427,8 @@ td {
     font-size: 3em;
   }
 
-  #myDiv {
+  #actressBar,
+  #myDiv2 {
     margin: 10 0px
   }
 
