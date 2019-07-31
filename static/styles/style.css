@@ -327,8 +327,9 @@ td {
 
 /* DATA PAGE */
 #actressBar,
+#actorBar,
 #myDiv2 {
-  margin: 10px 150px
+  margin: 10px 150px;
 }
 
 #actressP {
@@ -336,6 +337,13 @@ td {
   font-size: 14px;
 }
 
+.category {
+  margin: 55px 15px 0px;
+}
+
+#bestActress {
+  margin-top: 0px;
+}
 
 /**/
 
@@ -382,8 +390,9 @@ td {
   }
 
   #actressBar,
+  #actorBar,
   #myDiv2 {
-    margin: 10px 20px
+    margin: 10px 20px;
   }
 
   .input-group {
@@ -428,8 +437,9 @@ td {
   }
 
   #actressBar,
+  #actorBar,
   #myDiv2 {
-    margin: 10 0px
+    margin: 10px 0px;
   }
 
   .blanks {
@@ -448,5 +458,14 @@ td {
       "sidebar"
       "data"
       " footer";
+  }
+}
+
+@media (max-width: 425px) {
+  #actressBar,
+  #actorBar,
+  #myDiv2 {
+    margin: 10 0px;
+    
   }
 }
