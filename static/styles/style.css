@@ -326,14 +326,12 @@ td {
 /* Start of media queries */
 
 /* DATA PAGE */
-#actressBar,
-#actorBar,
-#myDiv2 {
-  margin: 10px 150px;
+.dataCharts {
+  margin: 10px 250px;
 }
 
 #actressP {
-  margin: 10px 200px;
+  margin: 10px 100px;
   font-size: 14px;
 }
 
@@ -389,9 +387,7 @@ td {
     background-image: none;
   }
 
-  #actressBar,
-  #actorBar,
-  #myDiv2 {
+  .dataCharts {
     margin: 10px 20px;
   }
 
@@ -436,9 +432,7 @@ td {
     font-size: 3em;
   }
 
-  #actressBar,
-  #actorBar,
-  #myDiv2 {
+  .dataCharts {
     margin: 10px 0px;
   }
 
@@ -462,10 +456,7 @@ td {
 }
 
 @media (max-width: 425px) {
-  #actressBar,
-  #actorBar,
-  #myDiv2 {
+  .dataCharts {
     margin: 10 0px;
-    
   }
 }

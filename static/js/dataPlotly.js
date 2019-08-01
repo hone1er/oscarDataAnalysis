@@ -24,10 +24,8 @@ function actressStackedBar() {
         marker: { color: "#ffa600" }
       };
       var counter = 0;
-      console.log(rows);
       rows.forEach(Element => {
         counter++;
-        console.log(counter);
         Object.entries(Element).forEach(([key, value]) => {
           if (key.length > 0 && counter === 1) {
             trace1.y.push(value * 100);
@@ -55,7 +53,7 @@ function actressStackedBar() {
       Plotly.newPlot("actressBar", data, layout, { responsive: true });
     }
   );
-};
+}
 
 function actorStackedBar() {
   Plotly.d3.csv(
@@ -86,7 +84,6 @@ function actorStackedBar() {
       var counter = 0;
       rows.forEach(Element => {
         counter++;
-        console.log(counter);
         Object.entries(Element).forEach(([key, value]) => {
           if (key.length > 0 && counter === 1) {
             actorTrace1.y.push(value * 100);
@@ -115,34 +112,50 @@ function actorStackedBar() {
       Plotly.newPlot("actorBar", actorData, layout, { responsive: true });
     }
   );
-};
+}
 
-function actressHeatmap() {
-  var xValues = [
-    "Budget",
-    "Popularity",
-    "Revenue",
-    "Ceremony",
-    "Vote Average",
-    "Vote Count"
-  ];
+const actressZValues = [
+  [1.0, 0.407, 0.745, 0.194, 0.084, 0.597],
+  [0.407, 1.0, 0.63, 0.08, 0.213, 0.673],
+  [0.745, 0.63, 1.0, 0.134, 0.201, 0.809],
+  [0.194, 0.08, 0.134, 1.0, 0.059, 0.117],
+  [0.084, 0.213, 0.201, 0.059, 1.0, 0.32],
+  [0.597, 0.673, 0.809, 0.117, 0.32, 1.0]
+];
 
-  var yValues = [
-    "Budget",
-    "Popularity",
-    "Revenue",
-    "Ceremony",
-    "Vote Average",
-    "Vote Count"
-  ];
-  var zValues = [
-    [1.0, 0.407, 0.745, 0.194, 0.084, 0.597],
-    [0.407, 1.0, 0.63, 0.08, 0.213, 0.673],
-    [0.745, 0.63, 1.0, 0.134, 0.201, 0.809],
-    [0.194, 0.08, 0.134, 1.0, 0.059, 0.117],
-    [0.084, 0.213, 0.201, 0.059, 1.0, 0.32],
-    [0.597, 0.673, 0.809, 0.117, 0.32, 1.0]
-  ];
+const actorZValues = [
+  [1.0, 0.527, 0.729, 0.192, 0.039, 0.537],
+  [0.527, 1.0, 0.696, 0.29, 0.361, 0.866],
+  [0.729, 0.696, 1.0, 0.222, 0.207, 0.747],
+  [0.192, 0.29, 0.222, 1.0, 0.496, 0.264],
+  [0.039, 0.361, 0.207, 0.496, 1.0, 0.349],
+  [0.537, 0.866, 0.747, 0.264, 0.349, 1.0]
+];
+
+var xValues = [
+  "Budget",
+  "Popularity",
+  "Revenue",
+  "Ceremony",
+  "Vote Average",
+  "Vote Count"
+];
+
+var yValues = [
+  "Budget",
+  "Popularity",
+  "Revenue",
+  "Ceremony",
+  "Vote Average",
+  "Vote Count"
+];
+
+function heatmap(x, y, z, div) {
+  let zValues = z;
+
+  let xValues = x;
+
+  let yValues = y;
 
   var data = [
     {
@@ -150,7 +163,7 @@ function actressHeatmap() {
       y: yValues,
       z: zValues,
       type: "heatmap",
-      showscale: false
+      showscale: true
     }
   ];
 
@@ -165,7 +178,7 @@ function actressHeatmap() {
     yaxis: {
       ticks: "",
       ticksuffix: " ",
-      tickangle: 45,
+      tickangle: -45,
       width: 700,
       height: 700,
       autosize: false
@@ -200,9 +213,10 @@ function actressHeatmap() {
     }
   }
 
-  Plotly.newPlot("myDiv2", data, layout, { responsive: true });
-};
+  Plotly.newPlot(div, data, layout, { responsive: true });
+}
 
 actressStackedBar();
 actorStackedBar();
-actressHeatmap();
+heatmap(xValues, yValues, actressZValues, "actressHeatmap");
+heatmap(xValues, yValues, actorZValues, "actorHeatmap");
