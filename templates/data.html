@@ -1,0 +1,131 @@
+{% extends "layout.html" %} {% block navblock %}
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('index') }}">
+    HOME
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('intro') }}">
+    INTRO
+  </a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link current" href="{{ url_for('data') }}">
+    DATA
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('about') }}">
+    ABOUT
+  </a>
+</li>
+{% endblock %} {% block content %}
+<div class="content"></div>
+{% endblock %} {% block data %} {% endblock%} {% block charts %}
+<div class="box charts" style="display: block">
+  <h1 id="bestActress" class="category">Best Actress in a Supporting Role</h1>
+  <div id="actressBar" class="dataCharts dataStackedBars"></div>
+  <p id="actressP">
+    According to the chart above the Oscar's seems to favor a few genres when
+    nominating best actress in a supporting role, such as drama and comedy.
+    Possibly more noteable, is how poorly
+  </p>
+  <div id="actressHeatmap" class="dataCharts dataHeatmap"></div>
+  <h1 class="category">Best Actor in a Leading Role</h1>
+  <div id="actorBar" class="dataCharts dataStackedBars"></div>
+  <div id="actorHeatmap" class="dataCharts dataHeatmap"></div>
+  <h1 class="category">Bechdel Test</h1>
+  <div id="bechdel" class="dataCharts dataStackedBars"></div>
+  <center>
+    <center>
+      <h2 class="category">Oscar demographics for best actress, actor, director, supporting actress, and supporting actor:</h2>
+    </center>
+    <div
+      class="tableauPlaceholder"
+      id="viz1564684275393"
+      style="position: relative"
+    >
+      <noscript
+        ><a href="#"
+          ><img
+            alt=" "
+            src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Q5&#47;Q5HDD3DGH&#47;1_rss.png"
+            style="border: none"/></a></noscript
+      ><object class="tableauViz" style="display:none;"
+        ><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+        <param name="embed_code_version" value="3"/>
+        <param
+          name="path"
+          value="views&#47;awardByRace_bubble&#47;BirthPlace?:embed=y"/>
+        <param name="toolbar" value="yes"/><param
+          name="static_image"
+          value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Q5&#47;Q5HDD3DGH&#47;1.png"/>
+        <param name="animate_transition" value="yes"/><param
+          name="display_static_image"
+          value="yes"/><param name="display_spinner" value="yes"/><param
+          name="display_overlay"
+          value="yes"/><param name="display_count" value="yes"
+      /></object>
+    </div>
+    <script type="text/javascript">
+      var divElement = document.getElementById("viz1564684275393");
+      var vizElement = divElement.getElementsByTagName("object")[0];
+      vizElement.style.minWidth = "420px";
+      vizElement.style.maxWidth = "650px";
+      vizElement.style.width = "100%";
+      vizElement.style.minHeight = "587px";
+      vizElement.style.maxHeight = "887px";
+      vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+      var scriptElement = document.createElement("script");
+      scriptElement.src =
+        "https://public.tableau.com/javascripts/api/viz_v1.js";
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+    <center>
+        <h2 class="category">Oscar Financials including revenue and budget:</h2>
+      </center>
+    <div
+      class="tableauPlaceholder"
+      id="viz1564684044801"
+      style="position: relative"
+    >
+      <noscript
+        ><a href="#"
+          ><img
+            alt=" "
+            src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Os&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage&#47;1_rss.png"
+            style="border: none"/></a></noscript
+      ><object class="tableauViz" style="display:none;"
+        ><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+        <param name="embed_code_version" value="3"/>
+        <param
+          name="path"
+          value="views&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage?:embed=y&amp;:display_count=y"/>
+        <param name="toolbar" value="yes"/><param
+          name="static_image"
+          value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Os&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage&#47;1.png"/>
+        <param name="animate_transition" value="yes"/><param
+          name="display_static_image"
+          value="yes"/><param name="display_spinner" value="yes"/><param
+          name="display_overlay"
+          value="yes"/><param name="display_count" value="yes"
+      /></object>
+    </div>
+    <script type="text/javascript">
+      var divElement = document.getElementById("viz1564684044801");
+      var vizElement = divElement.getElementsByTagName("object")[0];
+      vizElement.style.width = "100%";
+      vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+      var scriptElement = document.createElement("script");
+      scriptElement.src =
+        "https://public.tableau.com/javascripts/api/viz_v1.js";
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+  </center>
+</div>
+{% endblock %} {% block footer %}
+<div class="box footer">
+  Oscar Analysis &copy;2019
+</div>
+{% endblock %} {% block scripts %}<script src="{{ url_for('static', filename='js/dataPlotly.js') }}"></script>
+{% endblock %}

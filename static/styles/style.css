@@ -322,8 +322,38 @@ td {
   font-size: 4em;
 }
 
+.aboutDiv {
+  margin: 0 0 25vh;
+}
+
+.aboutDiv a {
+  margin: 10px 15px;
+}
+
+.titles {
+  margin-bottom: 20px;
+}
+.aboutP {
+  margin-top: 20px;
+}
 /* END ABOUT PAGE STYLING */
 /* Start of media queries */
+
+/* DATA PAGE */
+.dataCharts {
+  margin: 10px 250px;
+}
+
+#actressP {
+  margin: 10px 100px;
+  font-size: 14px;
+}
+
+.category {
+  margin: 10vh 15px 20px;
+}
+
+/**/
 
 @media (max-width: 1440px) {
   .send_movie {
@@ -361,6 +391,14 @@ td {
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
     margin-top: -5px;
+  }
+
+  #dataHeader {
+    background-image: none;
+  }
+
+  .dataCharts {
+    margin: 10px 20px;
   }
 
   .input-group {
@@ -404,6 +442,10 @@ td {
     font-size: 3em;
   }
 
+  .dataCharts {
+    margin: 10px 0px;
+  }
+
   .blanks {
     display: none;
   }
@@ -420,5 +462,11 @@ td {
       "sidebar"
       "data"
       " footer";
+  }
+}
+
+@media (max-width: 425px) {
+  .dataCharts {
+    margin: 10 0px;
   }
 }
