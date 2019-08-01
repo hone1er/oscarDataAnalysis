@@ -1,104 +1,91 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-  <!--<![endif]-->
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
+{% extends "layout.html" %} {% block navblock %}
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('index') }}">
+    HOME
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('intro') }}">
+    INTRO
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('data') }}">
+    DATA
+  </a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link current" href="{{ url_for('about') }}">
+    ABOUT
+  </a>
+</li>
+{% endblock %} {% block header %}
+<div id="dataHeader" class="box header" style="height: 100%;">
+  <div class="aboutDiv" data-aos="fade-down" style="margin-top: 15vh;">
+    <h2 class="titles">CHRIS E.</h2>
+    <img
+      src="../static/img/Headshot.png"
+      alt="Chris E"
+      style="height: 190px; width: 190px; border-radius: 95px;"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    <p class="aboutP">
+      I am a data driven professional with over 7 years of experience in Office
+      Management, Operations, and Data Science. As the Chief Technology Officer
+      for Prospanica San Francisco, I dedicate my time to empowering Hispanic
+      Communities, and help our members achieve their full educational,
+      economic, and social potential. Someday I will change the world, and when
+      I do, I'll automate it.
+    </p>
+    <a href="https://www.linkedin.com/in/christopher-e-4984021a/">Linked-in</a>
+    <a href="https://github.com/chrisestrada007">Github</a>
+  </div>
+  <div class="aboutDiv" data-aos="fade-down">
+    <h2 class="titles">SPAAR</h2>
+    <img
+      src="../static/img/image.png"
+      alt="Spaar"
+      style="height: 190px; width: 190px; border-radius: 95px"
     />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap"
-      rel="stylesheet"
+    <p class="aboutP">
+      I got into DS to aid my licensing/distribution job. I didn't like shooting
+      in the dark and hoping for the best, I instead preferred to develop
+      data-driven decision making that could produce tangible results.
+    </p>
+    <a href="https://www.linkedin.com/in/christopher-e-4984021a/">Linked-in</a>
+    <a href="https://github.com/chrisestrada007">Github</a>
+  </div>
+  <div class="aboutDiv" data-aos="fade-down">
+    <h2 class="titles">JOSEPH V.</h2>
+    <img
+      src="../static/img/joe.jpg"
+      alt=""
+      style="height: 190px; width: 190px; border-radius: 95px"
     />
-    <link type="text/css" rel="stylesheet" href="{{url_for("static", filename="styles/style.css")
-
-
-
-
-    }}">
-  </head>
-  <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="#">upgrade your browser</a> to improve your experience.
-      </p>
-    <![endif]-->
-
-    <div id="navbox" class="box navbox">
-      <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle"
-            data-toggle="collapse"
-            data-target="#myNavbar"
-          >
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">OSCAR PROJECT</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav" style="float: right;">
-            <li class="nav-item">
-              <a class="nav-link current" href="{{ url_for('index') }}">
-                HOME
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link current" href="{{ url_for('intro') }}">
-                INTRO
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link current" href="{{ url_for('about') }}">
-                ABOUT
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-
-    <center>
-    <div id="aboutHeader" class=" about aboutHeader overlay">
-        <h1>ABOUT</h1>
-      </div>
-    </center>
-    <div class="about aboutContent">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
-        rerum et doloremque autem commodi, perspiciatis, iusto voluptate
-        dignissimos enim atque iure earum nisi libero ad ipsa mollitia error
-        cumque amet.
-      </p>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.44.4/plotly.min.js"></script>
-    <!-- jQuery CDN -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"
-    ></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  </body>
-</html>
+    <p class="aboutP">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam esse
+      praesentium dignissimos tempora. At placeat, natus, voluptate beatae
+      impedit soluta et quis voluptates quidem cumque nihil laboriosam similique
+      iure! Ex?
+    </p>
+    <a href="https://www.linkedin.com/in/christopher-e-4984021a/">Linked-in</a>
+    <a href="https://github.com/hone1er">Github</a>
+  </div>
+  <div class="aboutDiv" data-aos="fade-down">
+    <h2 class="titles">Kayti</h2>
+    <img
+      src="../static/img/kayti.png"
+      alt=""
+      style="height: 190px; width: 190px; border-radius: 95px"
+    />
+    <p class="aboutP">
+      I started practicing data analytics before I knew it was a profession. The
+      small bushiness I worked generated their numbers via analogue. I've since
+      then automated the process and have accompanied the numbers with
+      visualizations. I loved the process so much I decided to pursue it as a
+      career!
+    </p>
+    <a href="https://www.linkedin.com/in/christopher-e-4984021a/">Linked-in</a>
+    <a href="https://github.com/hone1er">Github</a>
+  </div>
+</div>
+{% endblock %}

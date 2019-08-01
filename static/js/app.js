@@ -1,6 +1,3 @@
-// Initiates Animate On Scroll
-AOS.init();
-
 function movieName() {
   /**
  /* @return {string} */
@@ -259,20 +256,4 @@ $(function() {
       }
     }
   });
-});
-
-// Create the cities dropdown menu
-function movies() {
-  const selector = d3.select("#selDataset");
-  const movies = allMovies;
-  movies.forEach(element => {
-    const row = selector.append("option").attr("value", element);
-    row.text(element);
-  });
-}
-
-movies();
-
-jQuery(document).ready(function() {
-  $("select.flexselect").flexselect();
 });

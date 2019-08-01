@@ -1,24 +1,25 @@
 {% extends "layout.html" %} {% block navblock %}
 <li class="nav-item">
-        <a class="nav-link current" href="{{ url_for('index') }}">
-          HOME
-        </a>
-      </li>
-      <li class="nav-item active">
-          <a class="nav-link current" href="{{ url_for('intro') }}">
-            INTRO
-          </a>
-        </li>
-      <li class="nav-item">
-        <a class="nav-link current" href="{{ url_for('about') }}">
-          ABOUT
-        </a>
-      </li>
-{% endblock %} {% block header %}
-
-{% endblock %}
-
-{% block content %}
+  <a class="nav-link current" href="{{ url_for('index') }}">
+    HOME
+  </a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link current" href="{{ url_for('intro') }}">
+    INTRO
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('data') }}">
+    DATA
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link current" href="{{ url_for('about') }}">
+    ABOUT
+  </a>
+</li>
+{% endblock %} {% block header %} {% endblock %} {% block content %}
 <div class="box content">
   <div data-aos="fade-down">
     <h2 class="titles">INTRODUCTION:</h2>
@@ -30,7 +31,10 @@
       are here to find out. In this analysis we will be diving into the various
       factors that go into being nominated. We will first look at what the
       Academy states is the way to become nominated and then, as data geeks, we
-      will hunt for the data to back-up or debunk the claims.
+      will hunt for the data to back-up or debunk the claims. We've also build a
+      simple tool on the home page that delivers some basic information about a
+      movie entered by the user, giving some insight into the data used for this
+      project.
     </p>
   </div>
   <div data-aos="fade-up" data-aos-offset="200">
@@ -106,11 +110,8 @@
     </p>
   </div>
 </div>
-{% endblock %} {% block data %}
-{% endblock %} {% block charts %}
-<div class="box charts">
-
-</div>
+{% endblock %} {% block data %} {% endblock %} {% block charts %}
+<div class="box charts"></div>
 {% endblock %} {% block footer %}
 <div class="box footer">
   Oscar Analysis &copy;2019
