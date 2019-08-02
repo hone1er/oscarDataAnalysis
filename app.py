@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, Response
 import pandas as pd
-import os
 
 app = Flask(__name__)
 
@@ -30,8 +29,7 @@ def intro():
 
 class Grapher:
     def __init__(self):
-        file = os.path.join(os.path.dirname('__file__'),
-                            "resources/movieGraph2.csv")
+        file = "resources/movieGraph2.csv"
         self.df = pd.read_csv(file, index_col=['original_title', 'title'])
 
     def graph(self, movie):
@@ -43,8 +41,7 @@ class Grapher:
 
 
 grapher = Grapher()
-app.add_url_rule("/graph/<movie>", "",
-                 lambda movie: grapher.graph(movie), methods=["GET"])
+app.add_url_rule("/graph/<movie>", "", lambda movie: grapher.graph(movie), methods=["GET"])
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=False)
