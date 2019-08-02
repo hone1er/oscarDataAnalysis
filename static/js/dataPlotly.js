@@ -1,64 +1,73 @@
-const actressCSV = "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/femaleActressGenresDF.csv"
-const actorCSV = "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/actorLeadingRole.csv"
-const bechdelCSV = "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/forJoe.csv"
+const actressCSV =
+  "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/femaleActressGenresDF.csv";
+const actorCSV =
+  "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/actorLeadingRole.csv";
+const bechdelCSV =
+  "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/forJoe.csv";
 
-function stackedBar(csv, title, xtitle, trace1name, trace2name, div, marker1="#58508d", marker2="#ffa600") {
-  Plotly.d3.csv(csv
-    ,
-    function(err, rows) {
-      function unpack(rows, key) {
-        return rows.map(function(row) {
-          return row[key];
-        });
-      }
-
-      var actorTrace1 = {
-        type: "bar",
-        x: [],
-        y: [],
-        name: trace1name,
-        marker: { color: marker1 }
-      };
-
-      var actorTrace2 = {
-        type: "bar",
-        x: [],
-        y: [],
-        name: trace2name,
-        marker: { color: marker2 }
-      };
-
-      var counter = 0;
-      rows.forEach(Element => {
-        counter++;
-        Object.entries(Element).forEach(([key, value]) => {
-          if (key.length > 0 && counter === 1) {
-            actorTrace1.y.push(value * 100);
-          } else if (key.length > 0 && counter === 2) {
-            actorTrace1.x.push(key);
-            actorTrace2.x.push(key);
-            actorTrace2.y.push(value * 100);
-          }
-        });
+function stackedBar(
+  csv,
+  title,
+  xtitle,
+  trace1name,
+  trace2name,
+  div,
+  marker1 = "#58508d",
+  marker2 = "#ffa600"
+) {
+  Plotly.d3.csv(csv, function(err, rows) {
+    function unpack(rows, key) {
+      return rows.map(function(row) {
+        return row[key];
       });
-
-      var actorData = [actorTrace1, actorTrace2];
-      var layout = {
-        barmode: "stack",
-        title: title,
-        yaxis: {
-          title: xtitle
-        },
-        xaxis: {
-          tickangle: 45
-        },
-        paper_bgcolor: "#f3f3f3",
-        plot_bgcolor: "rgba(0, 0, 250, .02)"
-      };
-
-      Plotly.newPlot(div, actorData, layout, { responsive: true });
     }
-  );
+
+    var actorTrace1 = {
+      type: "bar",
+      x: [],
+      y: [],
+      name: trace1name,
+      marker: { color: marker1 }
+    };
+
+    var actorTrace2 = {
+      type: "bar",
+      x: [],
+      y: [],
+      name: trace2name,
+      marker: { color: marker2 }
+    };
+
+    var counter = 0;
+    rows.forEach(Element => {
+      counter++;
+      Object.entries(Element).forEach(([key, value]) => {
+        if (key.length > 0 && counter === 1) {
+          actorTrace1.y.push(value * 100);
+        } else if (key.length > 0 && counter === 2) {
+          actorTrace1.x.push(key);
+          actorTrace2.x.push(key);
+          actorTrace2.y.push(value * 100);
+        }
+      });
+    });
+
+    var actorData = [actorTrace1, actorTrace2];
+    var layout = {
+      barmode: "stack",
+      title: title,
+      yaxis: {
+        title: xtitle
+      },
+      xaxis: {
+        tickangle: 45
+      },
+      paper_bgcolor: "#f3f3f3",
+      plot_bgcolor: "rgba(0, 0, 250, .02)"
+    };
+
+    Plotly.newPlot(div, actorData, layout, { responsive: true });
+  });
 }
 
 function heatmap(values, z, div) {
@@ -152,10 +161,31 @@ const values = [
   "Vote Count"
 ];
 
-
-
-stackedBar(actorCSV, "Percentage by genres and nominations", "percentage (#genres/#movies)", "Non-nominees", "Nominees", actorBar)
-stackedBar(actressCSV, "Percentage by genres and nominations", "percentage (#genres/#movies)", "Non-nominees", "Nominees", actressBar)
-stackedBar(bechdelCSV, "Bechdel Test", " ", "Fail", "Pass", bechdel, '#bc5090', '#2f4b7c')
+stackedBar(
+  actorCSV,
+  "Percentage by genres and nominations",
+  "percentage (#genres/#movies)",
+  "Non-nominees",
+  "Nominees",
+  actorBar
+);
+stackedBar(
+  actressCSV,
+  "Percentage by genres and nominations",
+  "percentage (#genres/#movies)",
+  "Non-nominees",
+  "Nominees",
+  actressBar
+);
+stackedBar(
+  bechdelCSV,
+  "Bechdel Test",
+  " ",
+  "Fail",
+  "Pass",
+  bechdel,
+  "#bc5090",
+  "#2f4b7c"
+);
 heatmap(values, actressZValues, "actressHeatmap");
 heatmap(values, actorZValues, "actorHeatmap");

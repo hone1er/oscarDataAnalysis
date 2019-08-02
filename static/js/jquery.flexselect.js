@@ -14,22 +14,30 @@
  * Copyright (c) 2009-2015, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
  */
 (function($) {
-  $.flexselect = function(select, options) { this.init(select, options); };
+  $.flexselect = function(select, options) {
+    this.init(select, options);
+  };
 
   $.extend($.flexselect.prototype, {
     settings: {
       allowMismatch: false,
       allowMismatchBlank: true, // If "true" a user can backspace such that the value is nothing (even if no blank value was provided in the original criteria)
-      sortBy: 'score', // 'score' || 'name'
-      blankSortBy: 'initial', // 'score' || 'name' || 'initial'
+      sortBy: "score", // 'score' || 'name'
+      blankSortBy: "initial", // 'score' || 'name' || 'initial'
       preSelection: true,
       hideDropdownOnEmptyInput: false,
       selectedClass: "flexselect_selected",
       dropdownClass: "flexselect_dropdown",
       showDisabledOptions: false,
-      inputIdTransform:    function(id)   { return id + "_flexselect"; },
-      inputNameTransform:  function(name) { return; },
-      dropdownIdTransform: function(id)   { return id + "_flexselect_dropdown"; }
+      inputIdTransform: function(id) {
+        return id + "_flexselect";
+      },
+      inputNameTransform: function(name) {
+        return;
+      },
+      dropdownIdTransform: function(id) {
+        return id + "_flexselect_dropdown";
+      }
     },
     select: null,
     input: null,
@@ -58,30 +66,49 @@
       var indexGroup = this.settings.indexOptgroupLabels;
       this.cache = this.select.find("option").map(function() {
         name = $(this).text();
-        group = $(this).parent("optgroup").attr("label");
+        group = $(this)
+          .parent("optgroup")
+          .attr("label");
         text = indexGroup ? [name, group].join(" ") : name;
-        disabled = $(this).parent("optgroup").attr("disabled") || $(this).attr('disabled');
-        return { text: $.trim(text), name: $.trim(name), value: $(this).val(), disabled: disabled, score: 0.0 };
+        disabled =
+          $(this)
+            .parent("optgroup")
+            .attr("disabled") || $(this).attr("disabled");
+        return {
+          text: $.trim(text),
+          name: $.trim(name),
+          value: $(this).val(),
+          disabled: disabled,
+          score: 0.0
+        };
       });
     },
 
     renderControls: function() {
-      var selected = this.settings.preSelection ? this.select.find("option:selected") : null;
+      var selected = this.settings.preSelection
+        ? this.select.find("option:selected")
+        : null;
 
-      this.input = $("<input type='text' autocomplete='off' />").attr({
-        id: this.settings.inputIdTransform(this.select.attr("id")),
-        name: this.settings.inputNameTransform(this.select.attr("name")),
-        accesskey: this.select.attr("accesskey"),
-        tabindex: this.select.attr("tabindex"),
-        style: this.select.attr("style"),
-        placeholder: this.select.attr("data-placeholder")
-      }).addClass(this.select.attr("class")).val($.trim(selected ? selected.text():  '')).css({
-        visibility: 'visible'
-      });
+      this.input = $("<input type='text' autocomplete='off' />")
+        .attr({
+          id: this.settings.inputIdTransform(this.select.attr("id")),
+          name: this.settings.inputNameTransform(this.select.attr("name")),
+          accesskey: this.select.attr("accesskey"),
+          tabindex: this.select.attr("tabindex"),
+          style: this.select.attr("style"),
+          placeholder: this.select.attr("data-placeholder")
+        })
+        .addClass(this.select.attr("class"))
+        .val($.trim(selected ? selected.text() : ""))
+        .css({
+          visibility: "visible"
+        });
 
-      this.dropdown = $("<div></div>").attr({
-        id: this.settings.dropdownIdTransform(this.select.attr("id"))
-      }).addClass(this.settings.dropdownClass);
+      this.dropdown = $("<div></div>")
+        .attr({
+          id: this.settings.dropdownIdTransform(this.select.attr("id"))
+        })
+        .addClass(this.settings.dropdownClass);
       this.dropdownList = $("<ul></ul>");
       this.dropdown.append(this.dropdownList);
 
@@ -111,10 +138,9 @@
       this.input.blur(function() {
         if (!self.dropdownMouseover) {
           self.hide();
-          if (self.settings.allowMismatchBlank && $.trim($(this).val()) == '')
-            self.setValue('');
-          else if (!self.settings.allowMismatch && !self.picked)
-            self.reset();
+          if (self.settings.allowMismatchBlank && $.trim($(this).val()) == "")
+            self.setValue("");
+          else if (!self.settings.allowMismatch && !self.picked) self.reset();
         }
       });
 
@@ -172,7 +198,7 @@
 
       this.input.keydown(function(event) {
         switch (event.keyCode) {
-          case 9:  // tab
+          case 9: // tab
             self.pickSelected();
             self.hide();
             break;
@@ -201,15 +227,22 @@
       });
 
       var input = this.input;
-      this.select.change(function () {
-        input.val($.trim($(this).find('option:selected').text()));
+      this.select.change(function() {
+        input.val(
+          $.trim(
+            $(this)
+              .find("option:selected")
+              .text()
+          )
+        );
       });
     },
 
     filterResults: function() {
       var showDisabled = this.settings.showDisabledOptions;
       var abbreviation = $.trim(this.input.val());
-      var sortByMechanism = (abbreviation == "") ? this.settings.blankSortBy : this.settings.sortBy;
+      var sortByMechanism =
+        abbreviation == "" ? this.settings.blankSortBy : this.settings.sortBy;
       if (abbreviation == this.lastAbbreviation) return;
 
       var results = [];
@@ -227,11 +260,9 @@
       this.picked = false;
       this.allowMouseMove = false;
 
-      if (this.settings.hideDropdownOnEmptyInput){
-        if (abbreviation == "")
-          this.dropdown.hide();
-        else
-          this.dropdown.show();
+      if (this.settings.hideDropdownOnEmptyInput) {
+        if (abbreviation == "") this.dropdown.hide();
+        else this.dropdown.show();
       }
     },
 
@@ -244,30 +275,35 @@
     },
 
     sortResultsByScore: function() {
-      this.results.sort(function(a, b) { return b.score - a.score; });
+      this.results.sort(function(a, b) {
+        return b.score - a.score;
+      });
     },
 
     sortResultsByName: function() {
-      this.results.sort(function(a, b) { return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0); });
+      this.results.sort(function(a, b) {
+        return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+      });
     },
 
     renderDropdown: function() {
       var showDisabled = this.settings.showDisabledOptions;
-      var dropdownBorderWidth = this.dropdown.outerWidth() - this.dropdown.innerWidth();
+      var dropdownBorderWidth =
+        this.dropdown.outerWidth() - this.dropdown.innerWidth();
       var inputOffset = this.input.offset();
       this.dropdown.css({
-        width: (this.input.outerWidth() - dropdownBorderWidth) + "px",
-        top: (inputOffset.top + this.input.outerHeight()) + "px",
+        width: this.input.outerWidth() - dropdownBorderWidth + "px",
+        top: inputOffset.top + this.input.outerHeight() + "px",
         left: inputOffset.left + "px",
-        maxHeight: ''
+        maxHeight: ""
       });
 
-      var html = '';
-      var disabledAttribute = '';
+      var html = "";
+      var disabledAttribute = "";
       $.each(this.results, function() {
         if (this.disabled && !showDisabled) return;
-        disabledAttribute = this.disabled ? ' class="disabled"' : '';
-        html += '<li' + disabledAttribute + '>' + this.name + '</li>';
+        disabledAttribute = this.disabled ? ' class="disabled"' : "";
+        html += "<li" + disabledAttribute + ">" + this.name + "</li>";
       });
       this.dropdownList.html(html);
       this.adjustMaxHeight();
@@ -275,9 +311,17 @@
     },
 
     adjustMaxHeight: function() {
-      var maxTop = $(window).height() + $(window).scrollTop() - this.dropdown.outerHeight();
-      var top = parseInt(this.dropdown.css('top'), 10);
-      this.dropdown.css('max-height', top > maxTop ? (Math.max(0, maxTop - top + this.dropdown.innerHeight()) + 'px') : '');
+      var maxTop =
+        $(window).height() +
+        $(window).scrollTop() -
+        this.dropdown.outerHeight();
+      var top = parseInt(this.dropdown.css("top"), 10);
+      this.dropdown.css(
+        "max-height",
+        top > maxTop
+          ? Math.max(0, maxTop - top + this.dropdown.innerHeight()) + "px"
+          : ""
+      );
     },
 
     markSelected: function(n) {
@@ -287,7 +331,7 @@
       rows.removeClass(this.settings.selectedClass);
 
       var row = $(rows[n]);
-      if (row.hasClass('disabled')) {
+      if (row.hasClass("disabled")) {
         this.selectedIndex = null;
         return;
       }
@@ -328,18 +372,33 @@
       this.lastAbbreviation = null;
     },
 
-    moveSelected: function(n) { this.markSelected(this.selectedIndex+n); },
-    markFirst:    function()  { this.markSelected(0); },
-    markLast:     function()  { this.markSelected(this.results.length - 1); },
-    reset:        function()  { this.input.val(this.abbreviationBeforeFocus); },
-    focus:        function()  { this.input.focus(); },
-    focusAndHide: function()  { this.focus(); this.hide(); }
+    moveSelected: function(n) {
+      this.markSelected(this.selectedIndex + n);
+    },
+    markFirst: function() {
+      this.markSelected(0);
+    },
+    markLast: function() {
+      this.markSelected(this.results.length - 1);
+    },
+    reset: function() {
+      this.input.val(this.abbreviationBeforeFocus);
+    },
+    focus: function() {
+      this.input.focus();
+    },
+    focusAndHide: function() {
+      this.focus();
+      this.hide();
+    }
   });
 
   $.fn.flexselect = function(options) {
     this.each(function() {
       if ($(this).data("flexselect")) {
-        $(this).data("flexselect").reloadCache();
+        $(this)
+          .data("flexselect")
+          .reloadCache();
       } else if (this.tagName == "SELECT") {
         $(this).data("flexselect", new $.flexselect(this, options));
       }
