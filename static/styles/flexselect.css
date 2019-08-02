@@ -3,12 +3,12 @@
   position: absolute;
   z-index: 999999;
   margin: 0;
-	padding: 0;
-	border: 1px solid WindowFrame;
+  padding: 0;
+  border: 1px solid WindowFrame;
   max-height: 200px;
   overflow-x: hidden;
   overflow-y: auto;
-	background-color: Window;
+  background-color: Window;
   color: WindowText;
   text-align: left;
   box-shadow: 0 6px 12px #ccc;
@@ -16,21 +16,21 @@
 }
 
 .flexselect_dropdown ul {
-	width: 100%;
-	list-style-position: outside;
-	list-style: none;
-	padding: 0;
-	margin: 0;
+  width: 100%;
+  list-style-position: outside;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .flexselect_dropdown li {
-	margin: 0px;
-	padding: 2px 5px;
-	cursor: pointer;
-	display: block;
-	width: 100%;
-	font: Menu;
-	overflow: hidden;
+  margin: 0px;
+  padding: 2px 5px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  font: Menu;
+  overflow: hidden;
 }
 
 .flexselect_dropdown li.disabled {
@@ -39,6 +39,6 @@
 }
 
 .flexselect_selected {
-	background-color: Highlight;
-	color: HighlightText;
+  background-color: Highlight;
+  color: HighlightText;
 }

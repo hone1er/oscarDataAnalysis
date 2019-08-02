@@ -47,4 +47,4 @@ app.add_url_rule("/graph/<movie>", "",
                  lambda movie: grapher.graph(movie), methods=["GET"])
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run()

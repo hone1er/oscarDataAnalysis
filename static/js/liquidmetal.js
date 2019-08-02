@@ -40,11 +40,14 @@ var LiquidMetal = (function() {
 
       // sum per-character scores into overall scores,
       // selecting the maximum score
-      var maxScore = 0.0, maxArray = [];
+      var maxScore = 0.0,
+        maxArray = [];
       for (var i = 0; i < allScores.length; i++) {
         var scores = allScores[i];
         var scoreSum = 0.0;
-        for (var j = 0; j < string.length; j++) { scoreSum += scores[j]; }
+        for (var j = 0; j < string.length; j++) {
+          scoreSum += scores[j];
+        }
         if (scoreSum > maxScore) {
           maxScore = scoreSum;
           maxArray = scores;
@@ -61,11 +64,19 @@ var LiquidMetal = (function() {
       return maxScore;
     },
 
-    _scoreAll: function(string, search, abbrev, searchIndex, abbrIndex, scores, allScores) {
+    _scoreAll: function(
+      string,
+      search,
+      abbrev,
+      searchIndex,
+      abbrIndex,
+      scores,
+      allScores
+    ) {
       // save completed match scores at end of search
       if (abbrIndex == abbrev.length) {
         // add trailing score for the remainder of the match
-        var started = (search.charAt(0) == abbrev.charAt(0));
+        var started = search.charAt(0) == abbrev.charAt(0);
         var trailScore = started ? SCORE_TRAILING_BUT_STARTED : SCORE_TRAILING;
         fillArray(scores, trailScore, scores.length, string.length);
         // save score clone (since reference is persisted in scores)
@@ -83,39 +94,47 @@ var LiquidMetal = (function() {
 
       // match all instances of the abbreviaton char
       var scoreIndex = searchIndex; // score section to update
-      while ((index = search.indexOf(c, searchIndex+1)) != -1) {
+      while ((index = search.indexOf(c, searchIndex + 1)) != -1) {
         // score this match according to context
         if (isNewWord(string, index)) {
-          scores[index-1] = 1;
-          fillArray(scores, SCORE_BUFFER, scoreIndex+1, index-1);
-        }
-        else if (isUpperCase(string, index)) {
-          fillArray(scores, SCORE_BUFFER, scoreIndex+1, index);
-        }
-        else {
-          fillArray(scores, SCORE_NO_MATCH, scoreIndex+1, index);
+          scores[index - 1] = 1;
+          fillArray(scores, SCORE_BUFFER, scoreIndex + 1, index - 1);
+        } else if (isUpperCase(string, index)) {
+          fillArray(scores, SCORE_BUFFER, scoreIndex + 1, index);
+        } else {
+          fillArray(scores, SCORE_NO_MATCH, scoreIndex + 1, index);
         }
         scores[index] = SCORE_MATCH;
 
         // consume matched string and continue search
         searchIndex = index;
-        this._scoreAll(string, search, abbrev, searchIndex, abbrIndex, scores, allScores);
+        this._scoreAll(
+          string,
+          search,
+          abbrev,
+          searchIndex,
+          abbrIndex,
+          scores,
+          allScores
+        );
       }
     }
   };
 
   function isUpperCase(string, index) {
     var c = string.charAt(index);
-    return ("A" <= c && c <= "Z");
+    return "A" <= c && c <= "Z";
   }
 
-   function isNewWord(string, index) {
-    var c = string.charAt(index-1);
-    return (WORD_SEPARATORS.indexOf(c) != -1);
+  function isNewWord(string, index) {
+    var c = string.charAt(index - 1);
+    return WORD_SEPARATORS.indexOf(c) != -1;
   }
 
   function fillArray(array, value, from, to) {
-    for (var i = from; i < to; i++) { array[i] = value; }
+    for (var i = from; i < to; i++) {
+      array[i] = value;
+    }
     return array;
   }
 })();
