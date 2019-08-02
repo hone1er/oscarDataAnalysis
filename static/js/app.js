@@ -1,6 +1,5 @@
 function movieName() {
-  /**
- /* @return {string} */
+
 
   const selector = d3.select("#selDataset");
   const movie = selector.property("value");
@@ -9,9 +8,7 @@ function movieName() {
 
 function callAPI(movie) {
   // Separated API call to avoid multiple calls when building the dashboard.
-  /**
- * @param {string=} movie
- /* @return {Object} */
+
 
   const url = `/graph/${movie}`;
   const response = d3.json(url).then(function(response) {
@@ -21,10 +18,7 @@ function callAPI(movie) {
 }
 
 function buildBarChart(movie, apiCall) {
-  /**
-   * @param {string=} movie
-   * @param {object=} apiCall
-  /* Creates a graph using Plotly.js */
+
 
   apiCall.then(function(response) {
     const trace1 = {
@@ -89,11 +83,6 @@ function buildBarChart(movie, apiCall) {
 }
 
 function addTable(movie, apiCall) {
-  /**
-   // Creates the table below the bar chart showing the stats for the movie
-   * @param {string=} movie
-   * @param {Object=} apiCall
- /* @return {} */
 
   // Check if the table already exists and remove it if it does.
   if (document.contains(document.getElementById("tabled"))) {
@@ -161,10 +150,6 @@ function addTable(movie, apiCall) {
 }
 
 function starRating(movie, response) {
-  /**
- * @param {string=} movie
- * @param {Object=} apiCall
- /* @return {} */
 
   if (document.contains(document.getElementById("star"))) {
     document.getElementById("star").remove();
