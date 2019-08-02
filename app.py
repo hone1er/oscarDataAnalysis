@@ -26,7 +26,6 @@ def intro():
 # API call for bar chart and tables
 ###############################################################
 
-
 class Grapher:
     def __init__(self):
         file = "resources/movieGraph2.csv"
