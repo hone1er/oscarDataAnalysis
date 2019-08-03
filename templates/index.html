@@ -1,4 +1,7 @@
-{% extends "layout.html" %} {% block navblock %}
+
+{% extends "layout.html" %}
+{% block title %}Oscar Analysis{% endblock %}
+ {% block navblock %}
 <li class="nav-item active">
   <a class="nav-link current" href="{{ url_for('index') }}">
     HOME
@@ -32,7 +35,7 @@
         <option value="" selected disabled hidden></option>
       </select>
       <center>
-        <a href="#table" style="color: #000000">
+        <a href="#dashboard" style="color: #000000">
           <button id="filter-btn" type="submit" class="send_movie">
             Search
           </button>

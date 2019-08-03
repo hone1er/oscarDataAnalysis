@@ -1,4 +1,6 @@
-{% extends "layout.html" %} {% block navblock %}
+{% extends "layout.html" %} 
+{% block title %}ML Data{% endblock %}
+{% block navblock %}
 <li class="nav-item">
   <a class="nav-link current" href="{{ url_for('index') }}">
     HOME
@@ -22,20 +24,35 @@
 {% endblock %} {% block content %}
 <div class="content"></div>
 {% endblock %} {% block data %} {% endblock%} {% block charts %}
-<div class="box charts" style="display: block">
+<div class="box charts" style="display: block; margin-top: 10vh;">
   <h1 id="bestActress" class="category">Best Actress in a Supporting Role</h1>
   <div id="actressBar" class="dataCharts dataStackedBars"></div>
   <p id="actressP">
-    According to the chart above the Oscar's seems to favor a few genres when
-    nominating best actress in a supporting role, such as drama and comedy.
-    Possibly more noteable, is how poorly
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+    numquam quibusdam. Odio, iusto quisquam.
   </p>
   <div id="actressHeatmap" class="dataCharts dataHeatmap"></div>
+  <p id="actressP">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+    numquam quibusdam. Odio, iusto quisquam.
+  </p>
   <h1 class="category">Best Actor in a Leading Role</h1>
   <div id="actorBar" class="dataCharts dataStackedBars"></div>
+  <p id="actressP">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+    numquam quibusdam. Odio, iusto quisquam.
+  </p>
   <div id="actorHeatmap" class="dataCharts dataHeatmap"></div>
+  <p id="actressP">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+    numquam quibusdam. Odio, iusto quisquam.
+  </p>
   <h1 class="category">Bechdel Test</h1>
   <div id="bechdel" class="dataCharts dataStackedBars"></div>
+  <p id="actressP">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+    numquam quibusdam. Odio, iusto quisquam.
+  </p>
   <img src="../static/img/output.png" alt="" style="max-height: 450px" />
   <center>
     <h2 class="category">

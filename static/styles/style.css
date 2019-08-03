@@ -1,3 +1,12 @@
+.content,
+.sidebar {
+  margin-top: 50px;
+}
+.navbar {
+  position: fixed;
+  width: 100%; 
+  z-index: 10; 
+}
 /* grid setup and styling */
 .box {
   text-align: center;
@@ -345,7 +354,7 @@ td {
 }
 
 #actressP {
-  margin: 10px 100px;
+  margin: 10px 100px 50px;
   font-size: 14px;
 }
 
