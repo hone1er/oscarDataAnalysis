@@ -161,15 +161,7 @@ const values = [
   "Vote Count"
 ];
 
-stackedBar(
-  actorCSV,
-  "Percentage by genres and nominations",
-  "percentage (#genres/#movies)",
-  "Non-nominees",
-  "Nominees",
-  actorBar
-);
-stackedBar(
+const actressBarChart = stackedBar(
   actressCSV,
   "Percentage by genres and nominations",
   "percentage (#genres/#movies)",
@@ -177,7 +169,22 @@ stackedBar(
   "Nominees",
   actressBar
 );
-stackedBar(
+
+const actressHeatmap = heatmap(values, actressZValues, "actressHeatmap");
+
+const actorBarChart = stackedBar(
+  actorCSV,
+  "Percentage by genres and nominations",
+  "percentage (#genres/#movies)",
+  "Non-nominees",
+  "Nominees",
+  actorBar
+);
+
+const actorHeatmap = heatmap(values, actorZValues, "actorHeatmap");
+
+
+const bechdelBarChart = stackedBar(
   bechdelCSV,
   "Bechdel Test",
   " ",
@@ -187,5 +194,5 @@ stackedBar(
   "#bc5090",
   "#2f4b7c"
 );
-heatmap(values, actressZValues, "actressHeatmap");
-heatmap(values, actorZValues, "actorHeatmap");
+
+

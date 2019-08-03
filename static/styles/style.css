@@ -339,6 +339,14 @@ td {
   margin: 10px 15px;
 }
 
+.icons {
+  height: 50px;
+}
+
+#linked {
+  fill: rgb(10,102,194);
+}
+
 .titles {
   margin-bottom: 20px;
 }
