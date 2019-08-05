@@ -3225,7 +3225,7 @@ var allMovies = [
   "Æon Flux"
 ];
 
-// Create the cities dropdown menu
+// Create the movies dropdown menu
 function movies() {
   const selector = d3.select(".flexselect");
   const movies = allMovies;

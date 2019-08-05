@@ -35,12 +35,16 @@ class Grapher:
         # Format the name
         self.movie = movie
         movieInfo = self.df.loc[self.movie]
+        print("it works.........................")
         return movieInfo.to_json()
 ################################################################
 
 
 grapher = Grapher()
 app.add_url_rule("/graph/<movie>", "", lambda movie: grapher.graph(movie), methods=["GET"])
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=False)

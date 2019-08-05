@@ -8,14 +8,12 @@ function movieName() {
 
 function callAPI(movie) {
   // Separated API call to avoid multiple calls when building the dashboard.
-
-
   const url = `/graph/${movie}`;
   const response = d3.json(url).then(function(response) {
     return response;
   });
   return response;
-}
+};
 
 function buildBarChart(movie, apiCall) {
 
@@ -208,7 +206,6 @@ function starRating(movie, response) {
 }
 
 function doAll() {
-  d3.event.preventDefault();
   const movie = movieName();
   const response = callAPI(movie);
   starRating(movie, response);

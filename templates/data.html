@@ -1,6 +1,5 @@
-{% extends "layout.html" %} 
-{% block title %}ML Data{% endblock %}
-{% block navblock %}
+{% extends "layout.html" %} {% block title %}ML Data{% endblock %} {% block
+navblock %}
 <li class="nav-item">
   <a class="nav-link current" href="{{ url_for('index') }}">
     HOME
@@ -25,120 +24,302 @@
 <div class="content"></div>
 {% endblock %} {% block data %} {% endblock%} {% block charts %}
 <div class="box charts" style="display: block; margin-top: 10vh;">
-  <h1 id="bestActress" class="category">Best Actress in a Supporting Role</h1>
-  <div id="actressBar" class="dataCharts dataStackedBars"></div>
-  <p id="actressP">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-    numquam quibusdam. Odio, iusto quisquam.
-  </p>
-  <div id="actressHeatmap" class="dataCharts dataHeatmap"></div>
-  <p id="actressP">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-    numquam quibusdam. Odio, iusto quisquam.
-  </p>
-  <h1 class="category">Best Actor in a Leading Role</h1>
-  <div id="actorBar" class="dataCharts dataStackedBars"></div>
-  <p id="actressP">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-    numquam quibusdam. Odio, iusto quisquam.
-  </p>
-  <div id="actorHeatmap" class="dataCharts dataHeatmap"></div>
-  <p id="actressP">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-    numquam quibusdam. Odio, iusto quisquam.
-  </p>
-  <h1 class="category">Bechdel Test</h1>
-  <div id="bechdel" class="dataCharts dataStackedBars"></div>
-  <p id="actressP">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-    numquam quibusdam. Odio, iusto quisquam.
-  </p>
-  <img src="../static/img/output.png" alt="" style="max-height: 450px" />
-  <center>
-    <h2 class="category">
-      Oscar demographics for best actress, actor, director, supporting actress,
-      and supporting actor:
-    </h2>
-    <div
-      class="tableauPlaceholder"
-      id="viz1564684275393"
-      style="position: relative"
-    >
-      <noscript
-        ><a href="#"
-          ><img
-            alt=" "
-            src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Q5&#47;Q5HDD3DGH&#47;1_rss.png"
-            style="border: none"/></a></noscript
-      ><object class="tableauViz" style="display:none;"
-        ><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
-        <param name="embed_code_version" value="3"/>
-        <param
-          name="path"
-          value="views&#47;awardByRace_bubble&#47;BirthPlace?:embed=y"/>
-        <param name="toolbar" value="yes"/><param
-          name="static_image"
-          value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Q5&#47;Q5HDD3DGH&#47;1.png"/>
-        <param name="animate_transition" value="yes"/><param
-          name="display_static_image"
-          value="yes"/><param name="display_spinner" value="yes"/><param
-          name="display_overlay"
-          value="yes"/><param name="display_count" value="yes"
-      /></object>
+  <div class="presentation notebooks">
+    <h1>Importing Dependencies</h1>
+    <p>
+      The usual crowd. Seaborn is a library for making statistical graphics in
+      Python. It is built on top of matplotlib and closely integrated with
+      pandas data structures.
+    </p>
+    <img src="../static/img/Dependancies.png" alt="" style="max-width: 100%" />
+  </div>
+  <div class="presentation notebooks">
+    <h1>Importing Datasets</h1>
+    <p>
+      We looked on kaggle for relevant datasets and found some very useful files
+      containing movie data, awards data, and cast and crew data for the movies
+      listed. We found these to be incomplete and needed supplemental data to
+      make it useful.
+    </p>
+    <center>
+      <img
+        src="../static/img/Loadingsourcecsvs.png"
+        alt=""
+        style="max-width: 100%; max-width: 75%;"
+      />
+    </center>
+  </div>
+  <div class="presentation notebooks">
+    <h1>Scraping the Data</h1>
+    <p>
+      We created numerous scrapers to fill out our datasets. We scraped the
+      Academy Awards Site and IMDB (using TMDB’s API).
+    </p>
+    <div>
+      <img
+        src="../static/img/unnamed.png"
+        alt=""
+        style="max-width: 100%; margin-right: 5px;"
+      />
+      <img
+        src="../static/img/unnamed(1).png"
+        alt=""
+        style="max-width: 100%; margin-left: 5px;"
+      />
     </div>
-    <script type="text/javascript">
-      var divElement = document.getElementById("viz1564684275393");
-      var vizElement = divElement.getElementsByTagName("object")[0];
-      vizElement.style.minWidth = "420px";
-      vizElement.style.maxWidth = "650px";
-      vizElement.style.width = "100%";
-      vizElement.style.minHeight = "587px";
-      vizElement.style.maxHeight = "887px";
-      vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
-      var scriptElement = document.createElement("script");
-      scriptElement.src =
-        "https://public.tableau.com/javascripts/api/viz_v1.js";
-      vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    </script>
-    <h2 class="category">Oscar Financials including revenue and budget:</h2>
-    <div
-      class="tableauPlaceholder"
-      id="viz1564684044801"
-      style="position: relative"
-    >
-      <noscript
-        ><a href="#"
-          ><img
-            alt=" "
-            src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Os&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage&#47;1_rss.png"
-            style="border: none"/></a></noscript
-      ><object class="tableauViz" style="display:none;"
-        ><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
-        <param name="embed_code_version" value="3"/>
-        <param
-          name="path"
-          value="views&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage?:embed=y&amp;:display_count=y"/>
-        <param name="toolbar" value="yes"/><param
-          name="static_image"
-          value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Os&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage&#47;1.png"/>
-        <param name="animate_transition" value="yes"/><param
-          name="display_static_image"
-          value="yes"/><param name="display_spinner" value="yes"/><param
-          name="display_overlay"
-          value="yes"/><param name="display_count" value="yes"
-      /></object>
+  </div>
+  <div class="presentation notebooks">
+    <h1>Merging Data</h1>
+    <p>
+      We merged our newly scraped data to our existing datasets. This involved
+      some cleaning/standardization of values to ensure everything worked
+      correctly. We then dropped irrelevant data and created a master csv.
+    </p>
+    <img src="../static/img/merge2.png" alt="" style="max-width: 100%" />
+    <img src="../static/img/merge1.png" alt="" style="max-width: 100%" />
+    <img src="../static/img/merge3.png" alt="" style="max-width: 100%" />
+  </div>
+  <div class="presentation notebooks">
+    <h1>Normalizing our Data</h1>
+    <p>
+      Our dataset included a lot of movies that didn’t win. We wanted to
+      normalize our testing data to make sure our model predicted things more
+      accurately.
+    </p>
+    <img src="../static/img/norm.png" alt="" style="max-width: 100%" />
+    <img src="../static/img/norm1.png" alt="" style="max-width: 100%" />
+  </div>
+  <div class="presentation notebooks">
+    <h1>Correlation Analysis</h1>
+    <p>
+      We checked the heatmap to see if there were any interesting charts we
+      could play with. We decided to take a deeper look at budget, revenue, vote
+      count, vote average, popularity, and runtime.
+    </p>
+    <img src="../static/img/heatmap.png" alt="" style="max-width: 100%" />
+    <h2 id="bestActress" class="category">Best Actress in a Supporting Role</h2>
+    <div id="actressHeatmap" class="dataCharts dataHeatmap"></div>
+    <h2 class="category">Best Actor in a Leading Role</h2>
+    <div id="actorHeatmap" class="dataCharts dataHeatmap"></div>
+    <div class="imagegrid">
+      <img
+        src="../static/img/cor1.png"
+        alt=""
+        class="box img1"
+        style="max-width: 100%"
+      />
+      <img
+        src="../static/img/cor2.png"
+        alt=""
+        class="box img2"
+        style="max-width: 100%"
+      />
+      <img
+        src="../static/img/cor3.png"
+        alt=""
+        class="box img3"
+        style="max-width: 100%"
+      />
+      <img
+        src="../static/img/cor4.png"
+        alt=""
+        class="box img4"
+        style="max-width: 100%"
+      />
+      <img
+        src="../static/img/cor5.png"
+        alt=""
+        class="box img5"
+        style="max-width: 100%"
+      />
+      <img
+        src="../static/img/cor6.png"
+        alt=""
+        class="box img6"
+        style="max-width: 100%"
+      />
     </div>
-    <script type="text/javascript">
-      var divElement = document.getElementById("viz1564684044801");
-      var vizElement = divElement.getElementsByTagName("object")[0];
-      vizElement.style.width = "100%";
-      vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
-      var scriptElement = document.createElement("script");
-      scriptElement.src =
-        "https://public.tableau.com/javascripts/api/viz_v1.js";
-      vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    </script>
-  </center>
+  </div>
+  <div class="presentation notebooks">
+    <h1>Feature Engineering</h1>
+    <p>
+      We had a great deal of data for cast and crew, which we wanted to use for
+      our model. We stripped those down, transformed them to numerical values,
+      and ran them.
+    </p>
+    <img src="../static/img/feng.png" alt="" style="max-width: 100%" />
+    <img src="../static/img/feng1.png" alt="" style="max-width: 100%" />
+    <img src="../static/img/feng3.png" alt="" style="max-width: 100%" />
+  </div>
+  <div class="presentation notebooks">
+    <h1>Model Training</h1>
+    <p>
+      We separated our training and test data, scaled them, then ran them.
+    </p>
+    <img src="../static/img/train.png" alt="" style="max-width: 100%" />
+    <img src="../static/img/train1.png" alt="" style="max-width: 100%" />
+    <img src="../static/img/train2.png" alt="" style="max-width: 100%" />
+  </div>
+  <div class="presentation notebooks">
+    <h1>Predictions</h1>
+    <p>
+      We ran our logistical regression, and created a prediction using 2018 data
+      as our test. We were able to accurately determine the winner of the Best
+      Picture award (with one false positive).
+    </p>
+    <img src="../static/img/Dependancies.png" alt="" style="max-width: 100%" />
+  </div>
+  <div class="presentation notebooks">
+    <h1>Closing Remarks</h1>
+    <p>
+      We had some difficulty formatting and transforming the data, in particular
+      with Python not recognizing a list of dictionaries as a JSON object
+      (Solution was eval()). Refactoring to split up tasks in your code will
+      leave a much cleaner notebook, though for testing it’s understandable we
+      would go back and forth through a notebook. We trusted our code to working
+      in a way that we expected, but found out later on that it was excluding
+      the results we wanted and we scrambled to get it working properly; always
+      test your code to ensure it is doing not what you’re asking, but what
+      you’re expecting.
+    </p>
+    <img src="../static/img/Dependancies.png" alt="" style="max-width: 100%" />
+  </div>
+
+  <div class="dataexploration">
+    <h1>Data Exploration</h1>
+    <h2 id="bestActress" class="category">Best Actress in a Supporting Role</h2>
+    <div id="actressBar" class="dataCharts dataStackedBars"></div>
+    <p id="actressP">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+      numquam quibusdam. Odio, iusto quisquam.
+    </p>
+    <div id="actressHeatmap" class="dataCharts dataHeatmap"></div>
+    <p id="actressP">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+      numquam quibusdam. Odio, iusto quisquam.
+    </p>
+    <h2 class="category">Best Actor in a Leading Role</h2>
+    <div id="actorBar" class="dataCharts dataStackedBars"></div>
+    <p id="actressP">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+      numquam quibusdam. Odio, iusto quisquam.
+    </p>
+    <div id="actorHeatmap" class="dataCharts dataHeatmap"></div>
+    <p id="actressP">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+      numquam quibusdam. Odio, iusto quisquam.
+    </p>
+    <h2 class="category">Bechdel Test</h2>
+    <div id="bechdel" class="dataCharts dataStackedBars"></div>
+    <p id="actressP">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+      numquam quibusdam. Odio, iusto quisquam.
+    </p>
+    <img src="../static/img/output.png" alt="" style="max-width: 100%" />
+    <center>
+      <h2 class="category">
+        Oscar demographics for best actress, actor, director, supporting
+        actress, and supporting actor:
+      </h2>
+      <div
+        class="tableauPlaceholder"
+        id="viz1564684275393"
+        style="position: relative"
+      >
+        <noscript
+          ><a href="#"
+            ><img
+              alt=" "
+              src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Q5&#47;Q5HDD3DGH&#47;1_rss.png"
+              style="border: none"/></a></noscript
+        ><object class="tableauViz" style="display:none;"
+          ><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+          <param name="embed_code_version" value="3"/>
+          <param
+            name="path"
+            value="views&#47;awardByRace_bubble&#47;BirthPlace?:embed=y"/>
+          <param name="toolbar" value="yes"/><param
+            name="static_image"
+            value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Q5&#47;Q5HDD3DGH&#47;1.png"/>
+          <param name="animate_transition" value="yes"/><param
+            name="display_static_image"
+            value="yes"/><param name="display_spinner" value="yes"/><param
+            name="display_overlay"
+            value="yes"/><param name="display_count" value="yes"
+        /></object>
+      </div>
+      <script type="text/javascript">
+        var divElement = document.getElementById("viz1564684275393");
+        var vizElement = divElement.getElementsByTagName("object")[0];
+        vizElement.style.minWidth = "420px";
+        vizElement.style.maxWidth = "100%";
+        vizElement.style.width = "100%";
+        vizElement.style.minHeight = "587px";
+        vizElement.style.maxHeight = "887px";
+        vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+        var scriptElement = document.createElement("script");
+        scriptElement.src =
+          "https://public.tableau.com/javascripts/api/viz_v1.js";
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+      <h2 class="category">Oscar Financials including revenue and budget:</h2>
+      <div
+        class="tableauPlaceholder"
+        id="viz1564684044801"
+        style="position: relative"
+      >
+        <noscript
+          ><a href="#"
+            ><img
+              alt=" "
+              src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Os&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage&#47;1_rss.png"
+              style="border: none"/></a></noscript
+        ><object class="tableauViz" style="display:none;"
+          ><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+          <param name="embed_code_version" value="3"/>
+          <param
+            name="path"
+            value="views&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage?:embed=y&amp;:display_count=y"/>
+          <param name="toolbar" value="yes"/><param
+            name="static_image"
+            value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Os&#47;OscarData_15637432782970&#47;BudgetbyOGLanguage&#47;1.png"/>
+          <param name="animate_transition" value="yes"/><param
+            name="display_static_image"
+            value="yes"/><param name="display_spinner" value="yes"/><param
+            name="display_overlay"
+            value="yes"/><param name="display_count" value="yes"
+        /></object>
+      </div>
+      <script type="text/javascript">
+        var divElement = document.getElementById("viz1564684044801");
+        var vizElement = divElement.getElementsByTagName("object")[0];
+        vizElement.style.width = "100%";
+        vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+        var scriptElement = document.createElement("script");
+        scriptElement.src =
+          "https://public.tableau.com/javascripts/api/viz_v1.js";
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+    </center>
+  </div>
+  <div class="presentation limitations">
+    <h1>Limitations</h1>
+    <p>
+      Late in the project the API that the original dataset used changed it's
+      format. This presented an extra challenge when trying to gather and
+      structure the data to match the required shape. To get the model to work
+      the shape must match perfectly and user input needs to grab the needed
+      data and manipulate it into the correct shape into a viable dataframe
+      shape. Another challenge was finding a way to encode the large number of
+      entries in the cast members data. Feature engineering.
+    </p>
+    <img src="../static/img/timeLimit.png" alt="" style="height: 90vh;" />
+    <p>
+      Time was another limitation. Three fold validation on the model took just
+      under ten hours to complete. With only a few weeks to complete the
+      project, every hour counts.
+    </p>
+  </div>
 </div>
 {% endblock %} {% block footer %}
 <div class="box footer">

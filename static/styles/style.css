@@ -4,8 +4,8 @@
 }
 .navbar {
   position: fixed;
-  width: 100%; 
-  z-index: 10; 
+  width: 100%;
+  z-index: 10;
 }
 /* grid setup and styling */
 .box {
@@ -344,7 +344,7 @@ td {
 }
 
 #linked {
-  fill: rgb(10,102,194);
+  fill: rgb(10, 102, 194);
 }
 
 .titles {
@@ -367,7 +367,71 @@ td {
 }
 
 .category {
+  margin: 30px 15px 10px;
+}
+
+.presentation {
   margin: 10vh 15px 20px;
+  padding: 0 250px;
+}
+
+.presentation p {
+  padding: 15px 0 0;
+}
+
+.presentation img {
+  border: 1px solid rgb(184, 184, 184);
+  box-shadow: #cfcfcf7c 1px 1px 1px 1px;
+  margin: 10px;
+}
+
+.img1 {
+  grid-area: i1;
+  height: 270px;
+  width:650px;
+}
+
+.img2 {
+  grid-area: i2;
+  height: 270px;
+  width:650px;
+}
+
+.img3 {
+  grid-area: i3;
+  height: 270px;
+  width:650px;
+}
+
+.img4 {
+  grid-area: i4;
+  height: 270px;
+  width:650px;
+}
+
+.img5 {
+  grid-area: i5;
+  height: 270px;
+  width:650px;
+}
+
+.img6 {
+  grid-area: i6;
+  height: 270px;
+  width: 650px;
+}
+
+.imagegrid {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0px 5px;
+  grid-template-areas:
+   "i1 i2"
+   "i3 i4"
+   "i5 i6";
+  background-color: #f8f8f8;
+  color: #f8f8f8;
 }
 
 /**/
@@ -422,7 +486,7 @@ td {
     position: relative;
     padding: 5%;
     z-index: 2;
-    }
+  }
 
   #mainTitle {
     color: #f8f8f8;
@@ -445,6 +509,11 @@ td {
   }
   #enterMovie {
     color: #f8f8f8;
+  }
+
+  .presentation {
+    margin: 10vh 15px 20px;
+    padding: 0 150px;
   }
 }
 
@@ -479,10 +548,20 @@ td {
       "data"
       " footer";
   }
+
+  .presentation {
+    margin: 10vh 15px 20px;
+    padding: 0 95px;
+  }
 }
 
 @media (max-width: 425px) {
   .dataCharts {
     margin: 10 0px;
+  }
+
+  .presentation {
+    margin: 10vh 15px 20px;
+    padding: 0 70px;
   }
 }
