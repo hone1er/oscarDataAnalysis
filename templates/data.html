@@ -168,11 +168,28 @@ navblock %}
       as our test. We were able to accurately determine the winner of the Best
       Picture award (with one false positive).
     </p>
+    <img src="../static/img/final2.png" alt="" style="max-width: 100%" />
     <img src="../static/img/final.png" alt="" style="max-width: 100%" />
     <img src="../static/img/finalfinal.png" alt="" style="max-width: 100%" />
   </div>
-  <div class="presentation notebooks">
-    <h1>Limitations and Challenges</h1>
+  <div class="presentation limitations">
+    <h1>Limitations</h1>
+    <p>
+      Late in the project the API that the original dataset used changed it's
+      format. This presented an extra challenge when trying to gather and
+      structure the data to match the required shape. To get the model to work
+      the shape must match perfectly and user input needs to grab the needed
+      data and manipulate it into the correct shape into a viable dataframe
+      shape. Another challenge was finding a way to encode the large number of
+      entries in the cast members data. Feature engineering.
+    </p>
+    <img src="../static/img/timeLimit.png" alt="" style="height: 90vh;" />
+    <p>
+      Time was another limitation. Three fold validation on the model took just
+      under ten hours to complete. With only a few weeks to complete the
+      project, every hour counts.
+    </p>
+    <h3>Some other limitations:</h3>
     <ul class="limitations">
       <li>
         Accurate, if any, budget figures are very hard to find for most foreign
@@ -226,41 +243,22 @@ navblock %}
   </div>
 
   <div class="dataexploration">
-    <h1>Data Exploration</h1>
-    <h2 id="bestActress" class="category">Best Actress in a Supporting Role</h2>
+    <h2>Data Exploration</h2>
+    <h3 id="bestActress" class="category">Best Picture</h3>
     <div id="actressBar" class="dataCharts dataStackedBars"></div>
-    <p id="actressP">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-      numquam quibusdam. Odio, iusto quisquam.
-    </p>
-    <div id="actressHeatmap" class="dataCharts dataHeatmap"></div>
-    <p id="actressP">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-      numquam quibusdam. Odio, iusto quisquam.
-    </p>
-    <h2 class="category">Best Actor in a Leading Role</h2>
+    
+    <h3 class="category">Best Actor in a Leading Role</h3>
     <div id="actorBar" class="dataCharts dataStackedBars"></div>
-    <p id="actressP">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-      numquam quibusdam. Odio, iusto quisquam.
-    </p>
-    <div id="actorHeatmap" class="dataCharts dataHeatmap"></div>
-    <p id="actressP">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-      numquam quibusdam. Odio, iusto quisquam.
-    </p>
-    <h2 class="category">Bechdel Test</h2>
+    
+    <h3 class="category">Bechdel Test</h3>
     <div id="bechdel" class="dataCharts dataStackedBars"></div>
-    <p id="actressP">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-      numquam quibusdam. Odio, iusto quisquam.
-    </p>
+
     <img src="../static/img/output.png" alt="" style="max-width: 100%" />
     <center>
-      <h2 class="category">
+      <h3 class="category">
         Oscar demographics for best actress, actor, director, supporting
         actress, and supporting actor:
-      </h2>
+      </h3>
       <div
         class="tableauPlaceholder"
         id="viz1564684275393"
@@ -302,7 +300,7 @@ navblock %}
           "https://public.tableau.com/javascripts/api/viz_v1.js";
         vizElement.parentNode.insertBefore(scriptElement, vizElement);
       </script>
-      <h2 class="category">Oscar Financials including revenue and budget:</h2>
+      <h3 class="category">Oscar Financials including revenue and budget:</h3>
       <div
         class="tableauPlaceholder"
         id="viz1564684044801"
@@ -342,24 +340,7 @@ navblock %}
       </script>
     </center>
   </div>
-  <div class="presentation limitations">
-    <h1>Limitations</h1>
-    <p>
-      Late in the project the API that the original dataset used changed it's
-      format. This presented an extra challenge when trying to gather and
-      structure the data to match the required shape. To get the model to work
-      the shape must match perfectly and user input needs to grab the needed
-      data and manipulate it into the correct shape into a viable dataframe
-      shape. Another challenge was finding a way to encode the large number of
-      entries in the cast members data. Feature engineering.
-    </p>
-    <img src="../static/img/timeLimit.png" alt="" style="height: 90vh;" />
-    <p>
-      Time was another limitation. Three fold validation on the model took just
-      under ten hours to complete. With only a few weeks to complete the
-      project, every hour counts.
-    </p>
-  </div>
+  
 </div>
 {% endblock %} {% block footer %}
 <div class="box footer">
