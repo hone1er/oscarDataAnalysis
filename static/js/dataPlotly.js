@@ -1,5 +1,5 @@
-const actressCSV =
-  "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/femaleActressGenresDF.csv";
+const bestPicCSV =
+  "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/master/resources/bestPictureBar.csv";
 const actorCSV =
   "https://raw.githubusercontent.com/hone1er/oscarDataAnalysis/joe/resources/actorLeadingRole.csv";
 const bechdelCSV =
@@ -162,7 +162,7 @@ const values = [
 ];
 
 const actressBarChart = stackedBar(
-  actressCSV,
+  bestPicCSV,
   "Percentage by genres and nominations",
   "percentage (#genres/#movies)",
   "Non-nominees",
