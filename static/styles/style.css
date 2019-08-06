@@ -434,6 +434,11 @@ td {
   color: #f8f8f8;
 }
 
+.limitations li {
+  margin: 10px 0;
+  text-align: left;
+}
+
 /**/
 
 @media (max-width: 1440px) {

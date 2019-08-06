@@ -35,7 +35,6 @@ class Grapher:
         # Format the name
         self.movie = movie
         movieInfo = self.df.loc[self.movie]
-        print("it works.........................")
         return movieInfo.to_json()
 ################################################################
 
